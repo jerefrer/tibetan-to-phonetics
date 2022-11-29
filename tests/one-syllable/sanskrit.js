@@ -3,7 +3,7 @@ var { runTestGroup } = require('../helpers.js');
 runTestGroup({
   name: 'Sanskrit letters',
   tests: [
-    { tibetan: 'ཌི',    transliteration:   'di'},
-    { tibetan: 'ཊི',    transliteration:   'ti'},
+    { tibetan: 'ཌི',    converted:   'di'},
+    { tibetan: 'ཊི',    converted:   'ti'},
   ]
 })

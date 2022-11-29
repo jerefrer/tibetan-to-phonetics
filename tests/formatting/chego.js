@@ -4,13 +4,13 @@ runTestGroup({
   name: 'Formatting - Chego',
   tests: [
     // Specific cases
-    { tibetan: '༸ཞབས་',  transliteration:  'zhap'},  // With actual Chego
-    { tibetan: '༧ཞབས་',  transliteration:  'zhap'},  // With 7
-    { tibetan: '༸སྐྱབས',  transliteration:  'kyap'}, // With actual Chego
-    { tibetan: '༧སྐྱབས',  transliteration:  'kyap'}, // With 7
+    { tibetan: '༸ཞབས་',  converted:  'zhap'},  // With actual Chego
+    { tibetan: '༧ཞབས་',  converted:  'zhap'},  // With 7
+    { tibetan: '༸སྐྱབས',  converted:  'kyap'}, // With actual Chego
+    { tibetan: '༧སྐྱབས',  converted:  'kyap'}, // With 7
 
     // No specific rules
-    { tibetan: '༸སངས་',  transliteration:  'sang'}, // With actual Chego
-    { tibetan: '༸པ་',  transliteration:  'pa'},    // With actual Chego
+    { tibetan: '༸སངས་',  converted:  'sang'}, // With actual Chego
+    { tibetan: '༸པ་',  converted:  'pa'},    // With actual Chego
   ]
 })

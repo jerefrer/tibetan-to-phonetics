@@ -1,6 +1,6 @@
-import { TibetanNormalizer } from '../../tibetan-normalizer/dist/tibetan-normalizer.esm.js';
+import TibetanNormalizer from '../../tibetan-normalizer/dist/tibetan-normalizer.esm.js';
 
-export const removeUntranscribedPunctuationAndNormalize = function (tibetan) {
+export const removeMuteCharsAndNormalize = function (tibetan) {
   var normalized = TibetanNormalizer.normalize(tibetan);
   return normalized
     .replace(/[༵\u0F04-\u0F0A\u0F0D-\u0F1F\u0F3A-\u0F3F\u0FBE-\uF269]/g, '').trim()

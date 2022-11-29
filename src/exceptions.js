@@ -1,11 +1,25 @@
 import { _ } from '../node_modules/underscore/underscore.js';
 
 import { defaultGeneralExceptions } from '../settings/exceptions.js';
-import { removeUntranscribedPunctuationAndNormalize } from './utils';
+import { removeMuteCharsAndNormalize } from './utils';
 
 var t;
 
-export var Exceptions = function(setting, transliterator, rulesUsed, exceptionsUsed) {
+const normalize = function (exceptions) {
+  return _(exceptions).inject((hash, value, key) => {
+    if (key.trim().length) {
+      var normalizedKey = removeMuteCharsAndNormalize(key);
+      var normalizedValue = removeMuteCharsAndNormalize(value);
+      if (normalizedKey != normalizedValue)
+        hash[normalizedKey] = value;
+    }
+    return hash;
+  }, {});
+}
+
+var generalExceptions = normalize(defaultGeneralExceptions);
+
+export var Exceptions = function(setting, converter, rulesUsed, exceptionsUsed) {
   t = (key, track = true) => {
     var value = setting.rules[key];
     if (track)
@@ -14,13 +28,14 @@ export var Exceptions = function(setting, transliterator, rulesUsed, exceptionsU
   }
   return {
     setting: setting,
-    transliterator: transliterator,
+    converter: converter,
     exceptionsUsed: exceptionsUsed,
+    generalExceptions: generalExceptions,
     exceptions:
-      _(_.clone(setting.exceptions)).defaults(Exceptions.generalExceptions),
+      _(_.clone(setting.exceptions)).defaults(generalExceptions),
     find (tibetan) {
       var exception;
-      var transliteration;
+      var phonetics;
       var spaceAfter = false;
       var modifiers = ['འོ', 'འི', 'ས', 'ར'];
       var modifier = undefined;
@@ -60,18 +75,18 @@ export var Exceptions = function(setting, transliterator, rulesUsed, exceptionsU
           } else
             exception += modifier;
         }
-        transliteration = this.transcribeTibetanParts(exception);
-        transliteration = this.removeDuplicateEndingLetters(transliteration);
-        spaceAfter = transliteration.last() == ' ';
+        phonetics = this.convertTibetanParts(exception);
+        phonetics = this.removeDuplicateEndingLetters(phonetics);
+        spaceAfter = phonetics.last() == ' ';
         var numberOfSyllables = 1;
         var tsheks = tibetan.match(/་/g);
-        var syllableMarkers = transliteration.trim().match(/[_ ]/g);
+        var syllableMarkers = phonetics.trim().match(/[_ ]/g);
         if (syllableMarkers) numberOfSyllables = syllableMarkers.length + 1;
         return {
           spaceAfter: spaceAfter,
           numberOfSyllables: numberOfSyllables,
           numberOfShifts: tsheks ? tsheks.length : 0,
-          transliterated: transliteration.trim().replace(/_/g, '')
+          converted: phonetics.trim().replace(/_/g, '')
         }
       }
     },
@@ -85,13 +100,13 @@ export var Exceptions = function(setting, transliterator, rulesUsed, exceptionsU
     removeDuplicateEndingLetters (text) {
       return text.replace(/(.?)\1*$/, '$1');
     },
-    transcribeTibetanParts (text) {
+    convertTibetanParts (text) {
       var nonTibetanChars = new RegExp(/[\-\_\' a-zA-ZⒶＡÀÁÂẦẤẪẨÃĀĂẰẮẴẲȦǠÄǞẢÅǺǍȀȂẠẬẶḀĄȺⱯBⒷＢḂḄḆɃƂƁCⒸＣĆĈĊČÇḈƇȻꜾDⒹＤḊĎḌḐḒḎĐƋƊƉꝹEⒺＥÈÉÊỀẾỄỂẼĒḔḖĔĖËẺĚȄȆẸỆȨḜĘḘḚƐƎFⒻＦḞƑꝻGⒼＧǴĜḠĞĠǦĢǤƓꞠꝽꝾHⒽＨĤḢḦȞḤḨḪĦⱧⱵꞍIⒾＩÌÍÎĨĪĬİÏḮỈǏȈȊỊĮḬƗJⒿＪĴɈKⓀＫḰǨḲĶḴƘⱩꝀꝂꝄꞢLⓁＬĿĹĽḶḸĻḼḺŁȽⱢⱠꝈꝆꞀMⓂＭḾṀṂⱮƜNⓃＮǸŃÑṄŇṆŅṊṈȠƝꞐꞤOⓄＯÒÓÔỒỐỖỔÕṌȬṎŌṐṒŎȮȰÖȪỎŐǑȌȎƠỜỚỠỞỢỌỘǪǬØǾƆƟꝊꝌPⓅＰṔṖƤⱣꝐꝒꝔQⓆＱꝖꝘɊRⓇＲŔṘŘȐȒṚṜŖṞɌⱤꝚꞦꞂSⓈＳẞŚṤŜṠŠṦṢṨȘŞⱾꞨꞄTⓉＴṪŤṬȚŢṰṮŦƬƮȾꞆUⓊＵÙÚÛŨṸŪṺŬÜǛǗǕǙỦŮŰǓȔȖƯỪỨỮỬỰỤṲŲṶṴɄVⓋＶṼṾƲꝞɅWⓌＷẀẂŴẆẄẈⱲXⓍＸẊẌYⓎＹỲÝŶỸȲẎŸỶỴƳɎỾZⓏＺŹẐŻŽẒẔƵȤⱿⱫꝢaⓐａẚàáâầấẫẩãāăằắẵẳȧǡäǟảåǻǎȁȃạậặḁąⱥɐbⓑｂḃḅḇƀƃɓcⓒｃćĉċčçḉƈȼꜿↄdⓓｄḋďḍḑḓḏđƌɖɗꝺeⓔｅèéêềếễểẽēḕḗĕėëẻěȅȇẹệȩḝęḙḛɇɛǝfⓕｆḟƒꝼgⓖｇǵĝḡğġǧģǥɠꞡᵹꝿhⓗｈĥḣḧȟḥḩḫẖħⱨⱶɥiⓘｉìíîĩīĭïḯỉǐȉȋịįḭɨıjⓙｊĵǰɉkⓚｋḱǩḳķḵƙⱪꝁꝃꝅꞣlⓛｌŀĺľḷḹļḽḻſłƚɫⱡꝉꞁꝇmⓜｍḿṁṃɱɯnⓝｎǹńñṅňṇņṋṉƞɲŉꞑꞥoⓞｏòóôồốỗổõṍȭṏōṑṓŏȯȱöȫỏőǒȍȏơờớỡởợọộǫǭøǿɔꝋꝍɵpⓟｐṕṗƥᵽꝑꝓꝕqⓠｑɋꝗꝙrⓡｒŕṙřȑȓṛṝŗṟɍɽꝛꞧꞃsⓢｓśṥŝṡšṧṣṩșşȿꞩꞅẛtⓣｔṫẗťṭțţṱṯŧƭʈⱦꞇuⓤｕùúûũṹūṻŭüǜǘǖǚủůűǔȕȗưừứữửựụṳųṷṵʉvⓥｖṽṿʋꝟʌwⓦｗẁẃŵẇẅẘẉⱳxⓧｘẋẍyⓨｙỳýŷỹȳẏÿỷẙỵƴɏỿzⓩｚźẑżžẓẕƶȥɀⱬꝣǼǢꜺǄǅǽǣꜻǆ]+/);
       var nonTibetanPart = text.match(nonTibetanChars);
       if (nonTibetanPart) {
         var result = this.tr(text.slice(0, nonTibetanPart.index)) + nonTibetanPart[0];
         var rest = text.slice(nonTibetanPart.index + nonTibetanPart[0].length);
-        if (rest) return result + this.transcribeTibetanParts(rest);
+        if (rest) return result + this.convertTibetanParts(rest);
         else      return result;
       } else
         return this.tr(text);
@@ -100,49 +115,28 @@ export var Exceptions = function(setting, transliterator, rulesUsed, exceptionsU
       if (!word) return '';
       var tsheks = word.match(/་/);
       return (
-        this.transliterator.transliterate(word).replace(/ /g, '') +
+        this.converter.convert(word).replace(/ /g, '') +
         ''.pad(tsheks ? tsheks.length : 0, '_')
       );
     }
   }
 }
 
-Exceptions.normalize = function (exceptions) {
-  return _(exceptions).inject((hash, value, key) => {
-    if (key.trim().length) {
-      var normalizedKey = removeUntranscribedPunctuationAndNormalize(key);
-      var normalizedValue = removeUntranscribedPunctuationAndNormalize(value);
-      if (normalizedKey != normalizedValue)
-        hash[normalizedKey] = value;
-    }
-    return hash;
-  }, {});
-}
+Exceptions.normalize = normalize;
 
-Exceptions.initializeFromStorage = function(callback) {
-  Storage.get(
-    'general-exceptions',
-    Exceptions.normalize(defaultGeneralExceptions),
-    (value) => {
-      this.generalExceptions = value;
-      callback();
-    }
-  );
-}
-
-Exceptions.initializeFromDefaults = function() {
-  this.generalExceptions = Exceptions.normalize(defaultGeneralExceptions);
+Exceptions.reinitializeFromDefaults = function() {
+  Exceptions.generalExceptions = Exceptions.normalize(defaultGeneralExceptions);
 }
 
 Exceptions.generalExceptionsAsArray = function() {
-  return _(this.generalExceptions).map(function(value, key) {
+  return _(Exceptions.generalExceptions).map(function(value, key) {
     return { key: key, value: value }
   });
 }
 
 Exceptions.updateGeneralExceptions = function(exceptions, callback) {
   var normalizedExceptions = Exceptions.normalize(exceptions);
-  this.generalExceptions = normalizedExceptions;
+  Exceptions.generalExceptions = normalizedExceptions;
   Storage.set('general-exceptions', normalizedExceptions, (value) => {
     if (callback) callback(value);
   });

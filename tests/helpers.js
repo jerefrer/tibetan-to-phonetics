@@ -1,7 +1,5 @@
 var { _ } = require('../../underscore/underscore.umd.js');
-var { TibetanTransliterator, Settings, Exceptions } = require('../dist/tibetan-transliterator.umd.js');
-Settings.initializeFromDefaults();
-Exceptions.initializeFromDefaults();
+var { TibetanToPhonetics, Settings, Exceptions } = require('../dist/tibetan-to-phonetics.umd.js');
 
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
@@ -23,13 +21,13 @@ Exceptions.initializeFromDefaults();
             _(setting.rules).extend(testGroup.rules);
           if (testGroup.exceptions)
             _(setting.exceptions).extend(testGroup.exceptions);
-          var transliterated = new TibetanTransliterator(
+          var converted = new TibetanToPhonetics(
             {
               setting: setting,
               capitalize: testGroup.capitalize
             }
-          ).transliterate(test.tibetan);
-          expect(transliterated).toEqual(test.transliteration);
+          ).convert(test.tibetan);
+          expect(converted).toEqual(test.converted);
         })
       })
     })

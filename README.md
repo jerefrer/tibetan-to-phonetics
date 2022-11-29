@@ -1,7 +1,7 @@
-# tibetan-transliterator
+# tibetan-to-phonetics
 
-A naive attempt at automatically generating reliable Tibetan transliterations
-based on customizable sets of rules.
+A naive attempt at automatically converting Tibetan Unicode texts into
+reliable phonetics based on customizable sets of rules.
 
 Works almost perfectly for prayers which syllables are chanted two by two.
 
@@ -9,41 +9,43 @@ Usage
 -----------
 
 ```js
-import { TibetanTransliterator } from 'tibetan-syllable-parser';
+import { TibetanToPhonetics } from 'tibetan-to-phonetics';
 
-var transliterator = new TibetanTransliterator(); // using default 'english-strict'
-transliterator.transliterate('གང་གི་བློ་གྲོས་');
+var phonetics = new TibetanToPhonetics(); // using default 'english-strict'
+phonetics.convert('གང་གི་བློ་གྲོས་');
 // => 'kangki lotrö'
-transliterator.transliterate('སྒྲིབ་གཉིས་སྤྲིན་བྲལ་');
+phonetics.convert('སྒྲིབ་གཉིས་སྤྲིན་བྲལ་');
 // => 'dripnyi trintrel'
 ```
 Use the `capitalize` option to capitalize the first letter of every group,
 either passing it to the constructor:
 ```js
-var transliterator = new TibetanTransliterator({ capitalize: true });
-transliterator.transliterate('ཨེ་མ་ཧོཿ སྤྲོས་བྲལ་ཆོས་ཀྱི་དབྱིངས་ཀྱི་ཞིང་ཁམས་སུ༔ ');
+var phonetics = new TibetanToPhonetics({ capitalize: true });
+phonetics.convert('ཨེ་མ་ཧོཿ སྤྲོས་བྲལ་ཆོས་ཀྱི་དབྱིངས་ཀྱི་ཞིང་ཁམས་སུ༔ ');
 // => 'Émaho Trötrel chökyi yingkyi zhingkham su'
-transliterator.transliterate('གང་གི་བློ་གྲོས་');
+phonetics.convert('གང་གི་བློ་གྲོས་');
 // => 'Kangki lotrö'
 ```
 Or on a per-call basis:
 ```js
-var transliterator = new TibetanTransliterator();
-transliterator.transliterate('ཨེ་མ་ཧོཿ སྤྲོས་བྲལ་ཆོས་ཀྱི་དབྱིངས་ཀྱི་ཞིང་ཁམས་སུ༔ ', { capitalize: true });
+var phonetics = new TibetanToPhonetics();
+phonetics.convert('ཨེ་མ་ཧོཿ སྤྲོས་བྲལ་ཆོས་ཀྱི་དབྱིངས་ཀྱི་ཞིང་ཁམས་སུ༔ ', { capitalize: true });
 // => 'Émaho Trötrel chökyi yingkyi zhingkham su'
-transliterator.transliterate('ཨེ་མ་ཧོཿ སྤྲོས་བྲལ་ཆོས་ཀྱི་དབྱིངས་ཀྱི་ཞིང་ཁམས་སུ༔ ');
+phonetics.convert('ཨེ་མ་ཧོཿ སྤྲོས་བྲལ་ཆོས་ཀྱི་དབྱིངས་ཀྱི་ཞིང་ཁམས་སུ༔ ');
 // => 'émaho trötrel chökyi yingkyi zhingkham su'
 ```
 Use different settings, either by passing the name of an existing setting:
 ```js
-new TibetanTransliterator({ setting: 'english-loose' }).transliterate('གང་གི་བློ་གྲོས་');
+new TibetanToPhonetics({ setting: 'english-loose' }).convert('གང་གི་བློ་གྲོས་');
 // => 'gangi lodrö'
 
 ```
 Or the setting itself:
 ```js
+import { TibetanToPhonetics, Settings } from 'tibetan-to-phonetics';
+
 var frenchRuletset = Settings.find('french');
-new TibetanTransliterator({ setting: frenchRuletset }).transliterate('གང་གི་བློ་གྲོས་');
+new TibetanToPhonetics({ setting: frenchRuletset }).convert('གང་གི་བློ་གྲོས་');
 // => 'kangki lotreu'
 ```
 Or any object that quacks like a setting, meaning it returns objects for `rules` and `exceptions`:
@@ -52,17 +54,17 @@ var dummyRuleSet = {
   rules: { 'ö': 'eu' },
   exceptions: {}
 };
-new TibetanTransliterator({ setting: dummyRuleSet }).transliterate('གང་གི་བློ་གྲོས་');
+new TibetanToPhonetics({ setting: dummyRuleSet }).convert('གང་གི་བློ་གྲོས་');
 // => 'kangki lotreu'
 ```
 
-Lists of the rules and exceptions that have been used by an instance of transliterator
+Lists of the rules and exceptions that have been used by an instance of phonetics
 since its creation are available as `rulesUsed` and `exceptionsUsed`.
 ```js
-var transliterator = new TibetanTransliterator(); // using default 'english-strict'
-transliterator.transliterate('གང་གི་བློ་གྲོས་');
+var phonetics = new TibetanToPhonetics(); // using default 'english-strict'
+phonetics.convert('གང་གི་བློ་གྲོས་');
 // => 'kangki lotrö'
-transliterator.rulesUsed
+phonetics.rulesUsed
 // => {
 //   "ga": "k",
 //   "a": "a",
@@ -76,8 +78,8 @@ transliterator.rulesUsed
 ```
 They can be reset by calling `resetRulesUsed()` and `resetExceptionsUsed()`.
 ```js
-transliterator.resetRulesUsed();
-transliterator.rulesUsed
+phonetics.resetRulesUsed();
+phonetics.rulesUsed
 // => {}
 ```
 
@@ -92,7 +94,7 @@ since they form the basis upon which all other sets are built.
 
 Rules are defined as key-value pairs, the left-hand side being the internal
 code used by the app, the right-hand side what you want it to be substituted
-with in the generated transliteration.
+with in the generated conversion.
 
 For instance the rule for "kha" (2nd column "ka") in `base.js` is:
 ```js
@@ -137,7 +139,7 @@ Exceptions
 
 Default exceptions apply to all settings. Basically the left-hand
 side value will be substituted by the right-hand side value, and every Tibetan
-part in the right-hand side value will be itself transliterated.
+part in the right-hand side value will be itself converted.
 
 ### Editing default exceptions
 
@@ -177,15 +179,16 @@ font-family: TibetanChogyalUnicode-210803, TibetanChogyalUnicode-170221, Tibetan
 Development
 -----------
 
-Use `index_dev.html` instead of `index.html`.
-
-This way all javascripts files are loaded from their non-transpiled version
-(i.e. not the -dist.js files). This means you will see the results live even if
-your transpilation system is not running.
+`npm run serve`.
 
 Also you will have an extra option on the `/settings/exceptions` page allowing
 you to ignore browser stored values for the general exceptions, therefore making
 it easier to test the ones you are adding to the `settings/exceptions.js` file.
+
+Testing
+-----------
+
+`npm run test`.
 
 Contributing
 ------------
@@ -199,16 +202,6 @@ continue to yield the expected results.
 
 And if you do tweak the code, please add enough tests so that others after you
 can rely on them too!
-
-Testing
------------
-
-`npm run test`.
-
-TODO
------------
-
-See `TODO.md`
 
 Credits
 -----------

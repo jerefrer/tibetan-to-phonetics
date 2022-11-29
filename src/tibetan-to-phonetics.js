@@ -3,7 +3,7 @@ import { _ } from '../node_modules/underscore/underscore.js';
 import { Settings } from './settings.js';
 import { baseRules } from '../settings/base.js';
 import { Exceptions } from './exceptions.js';
-import { removeUntranscribedPunctuationAndNormalize } from './utils';
+import { removeMuteCharsAndNormalize } from './utils';
 import { TibetanSyllableParser } from '../../tibetan-syllable-parser/dist/tibetan-syllable-parser.esm.js';
 
 export var syllablesWithUnknownConsonant = [];
@@ -11,11 +11,11 @@ export { Settings } from './settings.js';
 export { baseRules } from '../settings/base.js';
 export { defaultSettings } from '../settings/all.js';
 export { Exceptions } from './exceptions.js';
-export { removeUntranscribedPunctuationAndNormalize } from './utils';
+export { removeMuteCharsAndNormalize } from './utils';
 
 var t, findException;
 
-export var TibetanTransliterator = function(options = {}) {
+export const TibetanToPhonetics = function(options = {}) {
   var setting = assignValidSettingOrThrowException(options.setting);
   var rulesUsed = {};
   var exceptionsUsed = {};
@@ -25,7 +25,7 @@ export var TibetanTransliterator = function(options = {}) {
       rulesUsed[key] = value;
     return value;
   }
-  var transliterator = {
+  var converter = {
     setting: setting,
     options: options,
     rulesUsed: rulesUsed,
@@ -36,8 +36,8 @@ export var TibetanTransliterator = function(options = {}) {
     resetExceptionsUsed () {
       this.exceptionsUsed = exceptionsUsed = {};
     },
-    transliterate: function(tibetan, options) {
-      tibetan = removeUntranscribedPunctuationAndNormalize(tibetan);
+    convert: function(tibetan, options) {
+      tibetan = removeMuteCharsAndNormalize(tibetan);
       tibetan = this.substituteWordsWith7AsCheGo(tibetan);
       tibetan = this.substituteNumbers(tibetan);
       var groups = this.splitBySpacesOrNumbers(tibetan);
@@ -45,7 +45,7 @@ export var TibetanTransliterator = function(options = {}) {
         if (tibetanGroup.match(/^\d+$/))
           return tibetanGroup;
         else {
-          var group = new Group(tibetanGroup, rulesUsed).transliterate();
+          var group = new Group(tibetanGroup, rulesUsed).convert();
           if (options && options.capitalize || this.options.capitalize)
             group = group.capitalize();
           return group;
@@ -70,23 +70,23 @@ export var TibetanTransliterator = function(options = {}) {
         replace(/༧སྐྱབས/g, 'སྐྱབས');
     }
   }
-  var exceptions = new Exceptions(setting, transliterator, rulesUsed, exceptionsUsed);
+  var exceptions = new Exceptions(setting, converter, rulesUsed, exceptionsUsed);
   findException = (text) => exceptions.find(text);
-  return transliterator;
+  return converter;
 }
 
 var Group = function(tibetan, rulesUsed) {
   return {
     tibetan: tibetan,
     group: '',
-    transliterate: function() {
+    convert: function() {
       var syllable;
       this.syllables = _.compact(tibetan.trim().split('་'));
       this.groupNumberOfSyllables = this.syllables.length;
       while (syllable = this.syllables.shift()) {
         var exception = this.findLongestException(syllable, this.syllables);
         if (exception) {
-          this.group += exception.transliterated;
+          this.group += exception.converted;
           if (exception.numberOfSyllables == 1) {
             if (exception.spaceAfter) this.group += ' ';
             this.handleSecondSyllable();
@@ -97,44 +97,44 @@ var Group = function(tibetan, rulesUsed) {
           if (this.isLastSyllableAndStartsWithBa(syllable))
             this.group += this.BaAsWaWhenSecondSyllable(syllable);
           else {
-            var firstTransliteration = new Syllable(syllable).transliterate();
-            if (this.handleSecondSyllable(firstTransliteration, syllable));
-            else this.group += firstTransliteration;
+            var firstSyllableConverted = new Syllable(syllable).convert();
+            if (this.handleSecondSyllable(firstSyllableConverted, syllable));
+            else this.group += firstSyllableConverted;
           }
         }
       }
       return this.group.trim();
     },
-    handleSecondSyllable: function(firstTransliteration, firstTibetan) {
+    handleSecondSyllable: function(firstSyllableConverted, firstSyllableTibetan) {
       var secondSyllable = this.syllables.shift();
       if (secondSyllable) {
-        var secondTransliteration;
+        var secondSyllableConverted;
         var secondException = this.findLongestException(secondSyllable, this.syllables);
         if (secondException) {
           this.shiftSyllables(secondException.numberOfShifts);
-          secondTransliteration = secondException.transliterated;
+          secondSyllableConverted = secondException.converted;
         } else {
-          var BaAsWaTransliteration;
-          if (BaAsWaTransliteration = this.BaAsWaWhenSecondSyllable(secondSyllable))
-            secondTransliteration = BaAsWaTransliteration;
+          var BaAsWaSyllableConverted;
+          if (BaAsWaSyllableConverted = this.BaAsWaWhenSecondSyllable(secondSyllable))
+            secondSyllableConverted = BaAsWaSyllableConverted;
           else
-            secondTransliteration = new Syllable(secondSyllable).transliterate();
+            secondSyllableConverted = new Syllable(secondSyllable).convert();
         }
-        if (firstTransliteration) {
-          if (this.AngOrAm(firstTibetan) || new Syllable(firstTibetan).endingO()) {
-            this.group += firstTransliteration + ' ';
+        if (firstSyllableConverted) {
+          if (this.AngOrAm(firstSyllableTibetan) || new Syllable(firstSyllableTibetan).endingO()) {
+            this.group += firstSyllableConverted + ' ';
             // Because *-am is two syllables, we add back the second syllable
             // to the array and return so that it gets processed as the first
             // syllable of the next pair.
             this.syllables.unshift(secondSyllable);
             return true;
           }
-          firstTransliteration = this.connectWithDashIfNecessaryForReadability(firstTransliteration, secondTransliteration);
-          firstTransliteration = this.handleDuplicateConnectingLetters(firstTransliteration, secondTransliteration);
-          firstTransliteration = this.handleDoubleS(firstTransliteration, secondTransliteration);
-          this.group += firstTransliteration;
+          firstSyllableConverted = this.connectWithDashIfNecessaryForReadability(firstSyllableConverted, secondSyllableConverted);
+          firstSyllableConverted = this.handleDuplicateConnectingLetters(firstSyllableConverted, secondSyllableConverted);
+          firstSyllableConverted = this.handleDoubleS(firstSyllableConverted, secondSyllableConverted);
+          this.group += firstSyllableConverted;
         }
-        this.group += secondTransliteration + ' ';
+        this.group += secondSyllableConverted + ' ';
         return true;
       }
     },
@@ -223,7 +223,7 @@ var Syllable = function(syllable) {
   var object = _.omit(parsed, (_.functions(parsed)));
   return _(object).extend({
     syllable: syllable,
-    transliterate: function() {
+    convert: function() {
       var consonant = this.consonant();
       if (consonant == undefined) {
         syllablesWithUnknownConsonant.push(syllable);

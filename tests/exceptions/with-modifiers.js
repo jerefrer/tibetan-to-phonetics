@@ -3,26 +3,26 @@ var { runTestGroup } = require('../helpers.js');
 runTestGroup({
   name: 'Exceptions - With modifiers',
   tests: [
-    { tibetan: 'པདྨའི་', transliteration: 'padmé' },
-    { tibetan: 'པདྨས་', transliteration: 'padmé' },
-    { tibetan: 'པདྨར་', transliteration: 'padmar' },
-    { tibetan: 'པདྨའོ་', transliteration: 'padma-o' },
+    { tibetan: 'པདྨའི་', converted: 'padmé' },
+    { tibetan: 'པདྨས་', converted: 'padmé' },
+    { tibetan: 'པདྨར་', converted: 'padmar' },
+    { tibetan: 'པདྨའོ་', converted: 'padma-o' },
 
-    { tibetan: 'པདྨོའི་', transliteration: 'padmö' },
-    { tibetan: 'པདྨོས་', transliteration: 'padmö' },
-    { tibetan: 'པདྨོར་', transliteration: 'padmor' },
+    { tibetan: 'པདྨོའི་', converted: 'padmö' },
+    { tibetan: 'པདྨོས་', converted: 'padmö' },
+    { tibetan: 'པདྨོར་', converted: 'padmor' },
 
-    { tibetan: 'མཁའ་འགྲོའི་', transliteration: 'khandrö' },
-    { tibetan: 'མཁའ་འགྲོས་', transliteration: 'khandrö' },
-    { tibetan: 'མཁའ་འགྲོར་', transliteration: 'khandror' },
+    { tibetan: 'མཁའ་འགྲོའི་', converted: 'khandrö' },
+    { tibetan: 'མཁའ་འགྲོས་', converted: 'khandrö' },
+    { tibetan: 'མཁའ་འགྲོར་', converted: 'khandror' },
 
-    { tibetan: 'ཌཱཀྐི་', transliteration: 'daki' },
-    { tibetan: 'ཌཱཀྐིའི་', transliteration: 'daki' },
-    { tibetan: 'ཌཱཀྐིའོ་', transliteration: 'daki-o' },
+    { tibetan: 'ཌཱཀྐི་', converted: 'daki' },
+    { tibetan: 'ཌཱཀྐིའི་', converted: 'daki' },
+    { tibetan: 'ཌཱཀྐིའོ་', converted: 'daki-o' },
 
-    { tibetan: 'ཨ་ཏིས་', transliteration: 'ati' },
+    { tibetan: 'ཨ་ཏིས་', converted: 'ati' },
 
-    { tibetan: 'མཉྫུ་གྷོ་ཥས་', transliteration: 'manjugoshé'},
+    { tibetan: 'མཉྫུ་གྷོ་ཥས་', converted: 'manjugoshé'},
   ]
 })
 
@@ -32,11 +32,11 @@ runTestGroup({
     'དྷརྨ': 'dhar_ma',
   },
   tests: [
-    { tibetan: 'དྷརྨ་', transliteration: 'dharma' },
-    { tibetan: 'དྷརྨའི་', transliteration: 'dharmé' },
-    { tibetan: 'དྷརྨས་', transliteration: 'dharmé' },
-    { tibetan: 'དྷརྨར་', transliteration: 'dharmar' },
-    { tibetan: 'དྷརྨའོ་', transliteration: 'dharma-o' },
+    { tibetan: 'དྷརྨ་', converted: 'dharma' },
+    { tibetan: 'དྷརྨའི་', converted: 'dharmé' },
+    { tibetan: 'དྷརྨས་', converted: 'dharmé' },
+    { tibetan: 'དྷརྨར་', converted: 'dharmar' },
+    { tibetan: 'དྷརྨའོ་', converted: 'dharma-o' },
   ]
 })
 
@@ -46,11 +46,11 @@ runTestGroup({
     'དྷརྨ': 'དྷར་མ',
   },
   tests: [
-    { tibetan: 'དྷརྨ་', transliteration: 'dharma' },
-    { tibetan: 'དྷརྨའི', transliteration: 'dharmé' },
-    { tibetan: 'དྷརྨས་', transliteration: 'dharmé' },
-    { tibetan: 'དྷརྨར་', transliteration: 'dharmar' },
-    { tibetan: 'དྷརྨའོ་', transliteration: 'dharma-o' },
+    { tibetan: 'དྷརྨ་', converted: 'dharma' },
+    { tibetan: 'དྷརྨའི', converted: 'dharmé' },
+    { tibetan: 'དྷརྨས་', converted: 'dharmé' },
+    { tibetan: 'དྷརྨར་', converted: 'dharmar' },
+    { tibetan: 'དྷརྨའོ་', converted: 'dharma-o' },
   ]
 })
 
@@ -60,11 +60,11 @@ runTestGroup({
     'རྡོ་རྗེ': 'dor_jé',
   },
   tests: [
-    { tibetan: 'རྡོ་རྗེ་', transliteration: 'dorjé' },
-    { tibetan: 'རྡོ་རྗེའི་', transliteration: 'dorjé' },
-    { tibetan: 'རྡོ་རྗེས་', transliteration: 'dorjé' },
-    { tibetan: 'རྡོ་རྗེར་', transliteration: 'dorjer' },
-    { tibetan: 'རྡོ་རྗེའོ་', transliteration: 'dorjé-o' },
+    { tibetan: 'རྡོ་རྗེ་', converted: 'dorjé' },
+    { tibetan: 'རྡོ་རྗེའི་', converted: 'dorjé' },
+    { tibetan: 'རྡོ་རྗེས་', converted: 'dorjé' },
+    { tibetan: 'རྡོ་རྗེར་', converted: 'dorjer' },
+    { tibetan: 'རྡོ་རྗེའོ་', converted: 'dorjé-o' },
   ]
 })
 
@@ -74,10 +74,10 @@ runTestGroup({
     'རྡོ་རྗེ': 'རྡོར་རྗེ',
   },
   tests: [
-    { tibetan: 'རྡོ་རྗེ་', transliteration: 'dorjé' },
-    { tibetan: 'རྡོ་རྗེའི་', transliteration: 'dorjé' },
-    { tibetan: 'རྡོ་རྗེས་', transliteration: 'dorjé' },
-    { tibetan: 'རྡོ་རྗེར་', transliteration: 'dorjer' },
-    { tibetan: 'རྡོ་རྗེའོ་', transliteration: 'dorjé-o' },
+    { tibetan: 'རྡོ་རྗེ་', converted: 'dorjé' },
+    { tibetan: 'རྡོ་རྗེའི་', converted: 'dorjé' },
+    { tibetan: 'རྡོ་རྗེས་', converted: 'dorjé' },
+    { tibetan: 'རྡོ་རྗེར་', converted: 'dorjer' },
+    { tibetan: 'རྡོ་རྗེའོ་', converted: 'dorjé-o' },
   ]
 })

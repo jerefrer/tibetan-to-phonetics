@@ -5,51 +5,51 @@ runTestGroup({
   tests: [
     // Yata
     // ==== Rago
-    { tibetan: 'རྐྱ',  transliteration: 'kya'},
-    { tibetan: 'རྒྱ',  transliteration: 'gya'},
-    { tibetan: 'རྦྱ',  transliteration:  'ja'},
-    { tibetan: 'རྨྱ',  transliteration: 'nya'},
+    { tibetan: 'རྐྱ',  converted: 'kya'},
+    { tibetan: 'རྒྱ',  converted: 'gya'},
+    { tibetan: 'རྦྱ',  converted:  'ja'},
+    { tibetan: 'རྨྱ',  converted: 'nya'},
     // ==== Lago
-    { tibetan: 'ལྐྱ',  transliteration: 'kya'},
-    { tibetan: 'ལྒྱ',  transliteration: 'gya'},
-    { tibetan: 'ལྤྱ',  transliteration: 'cha'},
-    { tibetan: 'ལྦྱ',  transliteration:  'ja'},
+    { tibetan: 'ལྐྱ',  converted: 'kya'},
+    { tibetan: 'ལྒྱ',  converted: 'gya'},
+    { tibetan: 'ལྤྱ',  converted: 'cha'},
+    { tibetan: 'ལྦྱ',  converted:  'ja'},
     // ==== Sago
-    { tibetan: 'སྐྱ',  transliteration: 'kya'},
-    { tibetan: 'སྒྱ',  transliteration: 'gya'},
-    { tibetan: 'སྤྱ',  transliteration: 'cha'},
-    { tibetan: 'སྦྱ',  transliteration:  'ja'},
-    { tibetan: 'སྨྱ',  transliteration: 'nya'},
+    { tibetan: 'སྐྱ',  converted: 'kya'},
+    { tibetan: 'སྒྱ',  converted: 'gya'},
+    { tibetan: 'སྤྱ',  converted: 'cha'},
+    { tibetan: 'སྦྱ',  converted:  'ja'},
+    { tibetan: 'སྨྱ',  converted: 'nya'},
     // === A few of them mixed with vowels
-    { tibetan: 'སྐྱོ',  transliteration: 'kyo'},
-    { tibetan: 'སྒྱོ',  transliteration: 'gyo'},
-    { tibetan: 'སྦྱེ',  transliteration:  'jé'},
+    { tibetan: 'སྐྱོ',  converted: 'kyo'},
+    { tibetan: 'སྒྱོ',  converted: 'gyo'},
+    { tibetan: 'སྦྱེ',  converted:  'jé'},
 
     // Rata
     // === Rago
-    { tibetan: 'རྐྲ',  transliteration: 'tra'},
-    { tibetan: 'རྒྲ',  transliteration: 'dra'},
-    { tibetan: 'རྟྲ',  transliteration: 'tra'},
-    { tibetan: 'རྡྲ',  transliteration: 'dra'},
-    { tibetan: 'རྦྲ',  transliteration: 'dra'},
-    { tibetan: 'རྨྲ',  transliteration:  'ma'},
+    { tibetan: 'རྐྲ',  converted: 'tra'},
+    { tibetan: 'རྒྲ',  converted: 'dra'},
+    { tibetan: 'རྟྲ',  converted: 'tra'},
+    { tibetan: 'རྡྲ',  converted: 'dra'},
+    { tibetan: 'རྦྲ',  converted: 'dra'},
+    { tibetan: 'རྨྲ',  converted:  'ma'},
     // === Lago
-    { tibetan: 'ལྐྲ',  transliteration: 'tra'},
-    { tibetan: 'ལྒྲ',  transliteration: 'dra'},
-    { tibetan: 'ལྟྲ',  transliteration: 'tra'},
-    { tibetan: 'ལྡྲ',  transliteration: 'dra'},
-    { tibetan: 'ལྦྲ',  transliteration: 'dra'},
+    { tibetan: 'ལྐྲ',  converted: 'tra'},
+    { tibetan: 'ལྒྲ',  converted: 'dra'},
+    { tibetan: 'ལྟྲ',  converted: 'tra'},
+    { tibetan: 'ལྡྲ',  converted: 'dra'},
+    { tibetan: 'ལྦྲ',  converted: 'dra'},
     // === Sago
-    { tibetan: 'སྐྲ',  transliteration: 'tra'},
-    { tibetan: 'སྒྲ',  transliteration: 'dra'},
-    { tibetan: 'སྟྲ',  transliteration: 'tra'},
-    { tibetan: 'སྡྲ',  transliteration: 'dra'},
-    { tibetan: 'སྦྲ',  transliteration: 'dra'},
-    { tibetan: 'སྨྲ',  transliteration:  'ma'},
+    { tibetan: 'སྐྲ',  converted: 'tra'},
+    { tibetan: 'སྒྲ',  converted: 'dra'},
+    { tibetan: 'སྟྲ',  converted: 'tra'},
+    { tibetan: 'སྡྲ',  converted: 'dra'},
+    { tibetan: 'སྦྲ',  converted: 'dra'},
+    { tibetan: 'སྨྲ',  converted:  'ma'},
     // === A few of them mixed with vowels
-    { tibetan: 'རྟྲི',  transliteration: 'tri'},
-    { tibetan: 'རྡྲི',  transliteration: 'dri'},
-    { tibetan: 'སྦྲེ',  transliteration: 'dré'},
-    { tibetan: 'སྒྲོ',  transliteration: 'dro'}
+    { tibetan: 'རྟྲི',  converted: 'tri'},
+    { tibetan: 'རྡྲི',  converted: 'dri'},
+    { tibetan: 'སྦྲེ',  converted: 'dré'},
+    { tibetan: 'སྒྲོ',  converted: 'dro'}
   ]
 })

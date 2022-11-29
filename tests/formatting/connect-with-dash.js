@@ -4,26 +4,26 @@ runTestGroup({
   name: 'Formatting - Connect with dash for readability',
   tests: [
     // Dash if first ends and second starts with vowel
-    { tibetan: 'བའི་འོས', transliteration: 'pé-ö' },
-    { tibetan: 'ས་འམ་', transliteration: 'sa-am' },
+    { tibetan: 'བའི་འོས', converted: 'pé-ö' },
+    { tibetan: 'ས་འམ་', converted: 'sa-am' },
     // Or a followed by n
-    { tibetan: 'མ་ཪྙེད་', transliteration: 'ma-nyé' },
-    { tibetan: 'མ་མངོན་', transliteration: 'ma-ngön' },
+    { tibetan: 'མ་ཪྙེད་', converted: 'ma-nyé' },
+    { tibetan: 'མ་མངོན་', converted: 'ma-ngön' },
     // Or o followed by n
-    { tibetan: 'མོ་སྣང་', transliteration: 'mo-nang' },
-    { tibetan: 'ལོ་ཉེས་', transliteration: 'lo-nyé' },
+    { tibetan: 'མོ་སྣང་', converted: 'mo-nang' },
+    { tibetan: 'ལོ་ཉེས་', converted: 'lo-nyé' },
     // Or g followed by n
-    { tibetan: 'བསང་སྣ་', transliteration: 'sang-na' },
-    { tibetan: 'གསང་སྔགས་', transliteration: 'sang-ngak' },
+    { tibetan: 'བསང་སྣ་', converted: 'sang-na' },
+    { tibetan: 'གསང་སྔགས་', converted: 'sang-ngak' },
 
     // A few counter-examples
     // No dash if ends with and starts with other consonants
-    { tibetan: 'སྒྲོལ་མ', transliteration: 'drölma' },
+    { tibetan: 'སྒྲོལ་མ', converted: 'drölma' },
     // No dash if a followed by g
-    { tibetan: 'བརྡ་བརྒྱུད་', transliteration: 'dagyü' },
+    { tibetan: 'བརྡ་བརྒྱུད་', converted: 'dagyü' },
     // No dash if o followed by g
-    { tibetan: 'འདོད་དགུའི་', transliteration: 'dögü' },
+    { tibetan: 'འདོད་དགུའི་', converted: 'dögü' },
     // No dash if k followed by n
-    { tibetan: 'ལེགས་བསྣམས་', transliteration: 'leknam' },
+    { tibetan: 'ལེགས་བསྣམས་', converted: 'leknam' },
   ]
 })

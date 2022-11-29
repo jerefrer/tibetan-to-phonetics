@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = global || self, factory(global.TibetanTransliterator = {}));
+  (global = global || self, factory(global.TibetanToPhonetics = {}));
 }(this, (function (exports) { 'use strict';
 
   //     Underscore.js 1.8.3
@@ -1549,13 +1549,13 @@
   |
   | - a colon                     <= If you forget any colon, the app won't work.
   |
-  | - some text in single         <= How it will be transcribed in the end.
+  | - some text in single         <= How it will be converted in the end.
   |   or double quotes               If the text includes single quotes,
   |                                  then it is wrapped in double quotes.
   |
   | - a comma                     <= If you forget any comma, the app won't work.
   |
-  | For instance, ཁྱེན will be transliterated by replacing each part one by one,
+  | For instance, ཁྱེན will be converted by replacing each part one by one,
   | using these rules:
   |
   | - khaYata         => 'khy'
@@ -1670,13 +1670,13 @@
   |
   | - a colon                     <= If you forget any colon, the app won't work.
   |
-  | - some text in single         <= How it will be transcribed in the end.
+  | - some text in single         <= How it will be converted in the end.
   |   or double quotes               If the text includes single quotes,
   |                                  then it is wrapped in double quotes.
   |
   | - a comma                     <= If you forget any comma, the app won't work.
   |
-  | For instance, ཁྱེན will be transliterated by replacing each part one by one,
+  | For instance, ཁྱེན will be converted by replacing each part one by one,
   | using these rules:
   |
   | - khaYata         => 'khy'
@@ -1735,13 +1735,13 @@
   |
   | - a colon                     <= If you forget any colon, the app won't work.
   |
-  | - some text in single         <= How it will be transcribed in the end.
+  | - some text in single         <= How it will be converted in the end.
   |   or double quotes               If the text includes single quotes,
   |                                  then it is wrapped in double quotes.
   |
   | - a comma                     <= If you forget any comma, the app won't work.
   |
-  | For instance, ཁྱེན will be transliterated by replacing each part one by one,
+  | For instance, ཁྱེན will be converted by replacing each part one by one,
   | using these rules:
   |
   | - khaYata         => 'khy'
@@ -1785,13 +1785,13 @@
   |
   | - a colon                     <= If you forget any colon, the app won't work.
   |
-  | - some text in single         <= How it will be transcribed in the end.
+  | - some text in single         <= How it will be converted in the end.
   |   or double quotes               If the text includes single quotes,
   |                                  then it is wrapped in double quotes.
   |
   | - a comma                     <= If you forget any comma, the app won't work.
   |
-  | For instance, ཁྱེན will be transliterated by replacing each part one by one,
+  | For instance, ཁྱེན will be converted by replacing each part one by one,
   | using these rules:
   |
   | - khaYata         => 'khy'
@@ -1824,13 +1824,13 @@
   |
   | - a colon                     <= If you forget any colon, the app won't work.
   |
-  | - some text in single         <= How it will be transcribed in the end.
+  | - some text in single         <= How it will be converted in the end.
   |   or double quotes               If the text includes single quotes,
   |                                  then it is wrapped in double quotes.
   |
   | - a comma                     <= If you forget any comma, the app won't work.
   |
-  | For instance, ཁྱེན will be transliterated by replacing each part one by one,
+  | For instance, ཁྱེན will be converted by replacing each part one by one,
   | using these rules:
   |
   | - khaYata         => 'khy'
@@ -1895,13 +1895,13 @@
   |
   | - a colon                     <= If you forget any colon, the app won't work.
   |
-  | - some text in single         <= How it will be transcribed in the end.
+  | - some text in single         <= How it will be converted in the end.
   |   or double quotes               If the text includes single quotes,
   |                                  then it is wrapped in double quotes.
   |
   | - a comma                     <= If you forget any comma, the app won't work.
   |
-  | For instance, ཁྱེན will be transliterated by replacing each part one by one,
+  | For instance, ཁྱེན will be converted by replacing each part one by one,
   | using these rules:
   |
   | - khaYata         => 'khy'
@@ -2052,11 +2052,21 @@
   defaultSettings.push(spanish);
   defaultSettings.push(englishSuperLoose);
 
-  var defaultSettingId = 'english-semi-strict';
+  const defaultSettingId = 'english-semi-strict';
 
-  var Settings = {
+  const defaultsMissingRulesToBaseRules = function(setting) {
+    setting.isDefault = true;
+    _(setting.rules).defaults(baseRules);
+    return setting;
+  };
+
+  const defaultSettings$1 =
+    defaultSettings.map((setting) => defaultsMissingRulesToBaseRules(setting));
+
+  const Settings = {
+    defaultSettings: defaultSettings$1,
     defaultSettingId: defaultSettingId,
-    settings: [],
+    settings: defaultSettings$1,
     all () {
       return this.settings;
     },
@@ -2069,11 +2079,11 @@
     find: function(settingId, options = {}) {
       if (!settingId) return;
       if (settingId.toString().match(/^\d*$/)) settingId = parseInt(settingId);
-      return _(this.settings).findWhere({id: settingId});
+      return _(this.settings).findWhere({ id: settingId });
     },
     findOriginal: function(settingId, options = {}) {
-      var setting = _(defaultSettings).findWhere({id: settingId});
-      return this.initializeSetting(setting);
+      var setting = _(defaultSettings$1).findWhere({ id: settingId });
+      return defaultsMissingRulesToBaseRules(setting);
     },
     update(settingId, name, rules, exceptions) {
       var setting = this.find(settingId);
@@ -2108,8 +2118,11 @@
           Storage.set('selectedSettingId', defaultSettingId);
       });
     },
+    replaceAllWith(newSettings) {
+      this.settings = newSettings;
+    },
     reset(callback) {
-      this.settings = this.initializedDefaultSettings();
+      this.settings = this.defaultSettings;
       this.updateStore(callback);
     },
     maxId () {
@@ -2125,23 +2138,6 @@
         if (callback) callback(value);
       });
     },
-    initializedDefaultSettings () {
-      return defaultSettings.map((setting) => this.initializeSetting(setting));
-    },
-    initializeFromDefaults() {
-      this.settings = this.initializedDefaultSettings();
-    },
-    initializeFromStorage (callback) {
-      Storage.get('settings', this.initializedDefaultSettings(), (value) => {
-        this.settings = value;
-        callback();
-      });
-    },
-    initializeSetting (setting) {
-      setting.isDefault = true;
-      _(setting.rules).defaults(baseRules);
-      return setting;
-    },
     numberOfSpecificRules (setting) {
       return _(setting.rules)
         .filter((value, key) => baseRules[key] != value)
@@ -2153,17 +2149,17 @@
   | Each line defines one exception.
   |
   | If any of the values on the left of the colon is found in the line to be
-  | transliterated, then it will be treated as if it was the value on the right
+  | converted, then it will be treated as if it was the value on the right
   | of the colon.
   |
-  | Tibetan characters will be transliterated as they would be normally.
+  | Tibetan characters will be converted as they would be normally.
   | Latin characters will be inserted as-is within the transliteration.
   |
   | If using Latin characters, then between each syllable you need to add an
   | underscore to help the system determine how many syllables the word is made
   | of, even if it does not exactly match how the word is composed.
   |
-  | For instance if you want to have སངས་རྒྱས་ always transliterated as 'sangye',
+  | For instance if you want to have སངས་རྒྱས་ always converted as 'sangye',
   | you would do:
   |
   | 'སངས་རྒྱས': 'san_gye'
@@ -2178,7 +2174,7 @@
   | 'སངས': 'SAN'
   | 'སངས་རྒྱས': 'san_GYE'
   |
-  | Then སངས་རྒྱས་ would be transliterated as sanGYE,  ignoring the first rule.
+  | Then སངས་རྒྱས་ would be converted as sanGYE,  ignoring the first rule.
   ----------------------------------------------------------------------------*/
 
   const defaultGeneralExceptions = {
@@ -2369,11 +2365,11 @@
     'སེངྒེ': 'སེང་སྒེ',
   };
 
-  const TibetanNormalizer = {
+  var tibetanNormalizer = {
 
     normalize (text) {
-      var normalized = TibetanNormalizer.normalizeCombinedLetters(text);
-      normalized = TibetanNormalizer.normalizeTsheks(normalized);
+      var normalized = this.normalizeCombinedLetters(text);
+      normalized = this.normalizeTsheks(normalized);
       return normalized;
     },
 
@@ -2388,12 +2384,14 @@
       return text
         .replace(/ༀ/g, 'ཨོཾ')
         .replace(/ཀྵ/g, 'ཀྵ')
+        .replace(/བྷ/g, 'བྷ')
         .replace(/ཱུ/g, 'ཱུ')
         .replace(/ཱི/g, 'ཱི')
         .replace(/ཱྀ/g, 'ཱྀ')
         .replace(/དྷ/g, 'དྷ')
         .replace(/གྷ/g, 'གྷ')
         .replace(/ཪླ/g, 'རླ')
+        .replace(/ྡྷ/g, 'ྡྷ')
         .replace(//g, '࿓༅')
         .replace(//g, 'སྤྲ')
         .replace(//g, 'ུ')
@@ -2415,12 +2413,13 @@
         .replace(//g, 'རྡ')
         .replace(//g, 'རྗ')
         .replace(//g, 'དྲྭ')
+        .replace(//g, 'ཛྲ')
     }
 
   };
 
-  const removeUntranscribedPunctuationAndNormalize = function (tibetan) {
-    var normalized = TibetanNormalizer.normalize(tibetan);
+  const removeMuteCharsAndNormalize = function (tibetan) {
+    var normalized = tibetanNormalizer.normalize(tibetan);
     return normalized
       .replace(/[༵\u0F04-\u0F0A\u0F0D-\u0F1F\u0F3A-\u0F3F\u0FBE-\uF269]/g, '').trim()
       .replace(/[༔ཿ]/g, '་')
@@ -2492,7 +2491,21 @@
 
   var t;
 
-  var Exceptions = function(setting, transliterator, rulesUsed, exceptionsUsed) {
+  const normalize = function (exceptions) {
+    return _(exceptions).inject((hash, value, key) => {
+      if (key.trim().length) {
+        var normalizedKey = removeMuteCharsAndNormalize(key);
+        var normalizedValue = removeMuteCharsAndNormalize(value);
+        if (normalizedKey != normalizedValue)
+          hash[normalizedKey] = value;
+      }
+      return hash;
+    }, {});
+  };
+
+  var generalExceptions = normalize(defaultGeneralExceptions);
+
+  var Exceptions = function(setting, converter, rulesUsed, exceptionsUsed) {
     t = (key, track = true) => {
       var value = setting.rules[key];
       if (track)
@@ -2501,13 +2514,14 @@
     };
     return {
       setting: setting,
-      transliterator: transliterator,
+      converter: converter,
       exceptionsUsed: exceptionsUsed,
+      generalExceptions: generalExceptions,
       exceptions:
-        _(_.clone(setting.exceptions)).defaults(Exceptions.generalExceptions),
+        _(_.clone(setting.exceptions)).defaults(generalExceptions),
       find (tibetan) {
         var exception;
-        var transliteration;
+        var phonetics;
         var spaceAfter = false;
         var modifiers = ['འོ', 'འི', 'ས', 'ར'];
         var modifier = undefined;
@@ -2547,18 +2561,18 @@
             } else
               exception += modifier;
           }
-          transliteration = this.transcribeTibetanParts(exception);
-          transliteration = this.removeDuplicateEndingLetters(transliteration);
-          spaceAfter = transliteration.last() == ' ';
+          phonetics = this.convertTibetanParts(exception);
+          phonetics = this.removeDuplicateEndingLetters(phonetics);
+          spaceAfter = phonetics.last() == ' ';
           var numberOfSyllables = 1;
           var tsheks = tibetan.match(/་/g);
-          var syllableMarkers = transliteration.trim().match(/[_ ]/g);
+          var syllableMarkers = phonetics.trim().match(/[_ ]/g);
           if (syllableMarkers) numberOfSyllables = syllableMarkers.length + 1;
           return {
             spaceAfter: spaceAfter,
             numberOfSyllables: numberOfSyllables,
             numberOfShifts: tsheks ? tsheks.length : 0,
-            transliterated: transliteration.trim().replace(/_/g, '')
+            converted: phonetics.trim().replace(/_/g, '')
           }
         }
       },
@@ -2572,13 +2586,13 @@
       removeDuplicateEndingLetters (text) {
         return text.replace(/(.?)\1*$/, '$1');
       },
-      transcribeTibetanParts (text) {
+      convertTibetanParts (text) {
         var nonTibetanChars = new RegExp(/[\-\_\' a-zA-ZⒶＡÀÁÂẦẤẪẨÃĀĂẰẮẴẲȦǠÄǞẢÅǺǍȀȂẠẬẶḀĄȺⱯBⒷＢḂḄḆɃƂƁCⒸＣĆĈĊČÇḈƇȻꜾDⒹＤḊĎḌḐḒḎĐƋƊƉꝹEⒺＥÈÉÊỀẾỄỂẼĒḔḖĔĖËẺĚȄȆẸỆȨḜĘḘḚƐƎFⒻＦḞƑꝻGⒼＧǴĜḠĞĠǦĢǤƓꞠꝽꝾHⒽＨĤḢḦȞḤḨḪĦⱧⱵꞍIⒾＩÌÍÎĨĪĬİÏḮỈǏȈȊỊĮḬƗJⒿＪĴɈKⓀＫḰǨḲĶḴƘⱩꝀꝂꝄꞢLⓁＬĿĹĽḶḸĻḼḺŁȽⱢⱠꝈꝆꞀMⓂＭḾṀṂⱮƜNⓃＮǸŃÑṄŇṆŅṊṈȠƝꞐꞤOⓄＯÒÓÔỒỐỖỔÕṌȬṎŌṐṒŎȮȰÖȪỎŐǑȌȎƠỜỚỠỞỢỌỘǪǬØǾƆƟꝊꝌPⓅＰṔṖƤⱣꝐꝒꝔQⓆＱꝖꝘɊRⓇＲŔṘŘȐȒṚṜŖṞɌⱤꝚꞦꞂSⓈＳẞŚṤŜṠŠṦṢṨȘŞⱾꞨꞄTⓉＴṪŤṬȚŢṰṮŦƬƮȾꞆUⓊＵÙÚÛŨṸŪṺŬÜǛǗǕǙỦŮŰǓȔȖƯỪỨỮỬỰỤṲŲṶṴɄVⓋＶṼṾƲꝞɅWⓌＷẀẂŴẆẄẈⱲXⓍＸẊẌYⓎＹỲÝŶỸȲẎŸỶỴƳɎỾZⓏＺŹẐŻŽẒẔƵȤⱿⱫꝢaⓐａẚàáâầấẫẩãāăằắẵẳȧǡäǟảåǻǎȁȃạậặḁąⱥɐbⓑｂḃḅḇƀƃɓcⓒｃćĉċčçḉƈȼꜿↄdⓓｄḋďḍḑḓḏđƌɖɗꝺeⓔｅèéêềếễểẽēḕḗĕėëẻěȅȇẹệȩḝęḙḛɇɛǝfⓕｆḟƒꝼgⓖｇǵĝḡğġǧģǥɠꞡᵹꝿhⓗｈĥḣḧȟḥḩḫẖħⱨⱶɥiⓘｉìíîĩīĭïḯỉǐȉȋịįḭɨıjⓙｊĵǰɉkⓚｋḱǩḳķḵƙⱪꝁꝃꝅꞣlⓛｌŀĺľḷḹļḽḻſłƚɫⱡꝉꞁꝇmⓜｍḿṁṃɱɯnⓝｎǹńñṅňṇņṋṉƞɲŉꞑꞥoⓞｏòóôồốỗổõṍȭṏōṑṓŏȯȱöȫỏőǒȍȏơờớỡởợọộǫǭøǿɔꝋꝍɵpⓟｐṕṗƥᵽꝑꝓꝕqⓠｑɋꝗꝙrⓡｒŕṙřȑȓṛṝŗṟɍɽꝛꞧꞃsⓢｓśṥŝṡšṧṣṩșşȿꞩꞅẛtⓣｔṫẗťṭțţṱṯŧƭʈⱦꞇuⓤｕùúûũṹūṻŭüǜǘǖǚủůűǔȕȗưừứữửựụṳųṷṵʉvⓥｖṽṿʋꝟʌwⓦｗẁẃŵẇẅẘẉⱳxⓧｘẋẍyⓨｙỳýŷỹȳẏÿỷẙỵƴɏỿzⓩｚźẑżžẓẕƶȥɀⱬꝣǼǢꜺǄǅǽǣꜻǆ]+/);
         var nonTibetanPart = text.match(nonTibetanChars);
         if (nonTibetanPart) {
           var result = this.tr(text.slice(0, nonTibetanPart.index)) + nonTibetanPart[0];
           var rest = text.slice(nonTibetanPart.index + nonTibetanPart[0].length);
-          if (rest) return result + this.transcribeTibetanParts(rest);
+          if (rest) return result + this.convertTibetanParts(rest);
           else      return result;
         } else
           return this.tr(text);
@@ -2587,49 +2601,28 @@
         if (!word) return '';
         var tsheks = word.match(/་/);
         return (
-          this.transliterator.transliterate(word).replace(/ /g, '') +
+          this.converter.convert(word).replace(/ /g, '') +
           ''.pad(tsheks ? tsheks.length : 0, '_')
         );
       }
     }
   };
 
-  Exceptions.normalize = function (exceptions) {
-    return _(exceptions).inject((hash, value, key) => {
-      if (key.trim().length) {
-        var normalizedKey = removeUntranscribedPunctuationAndNormalize(key);
-        var normalizedValue = removeUntranscribedPunctuationAndNormalize(value);
-        if (normalizedKey != normalizedValue)
-          hash[normalizedKey] = value;
-      }
-      return hash;
-    }, {});
-  };
+  Exceptions.normalize = normalize;
 
-  Exceptions.initializeFromStorage = function(callback) {
-    Storage.get(
-      'general-exceptions',
-      Exceptions.normalize(defaultGeneralExceptions),
-      (value) => {
-        this.generalExceptions = value;
-        callback();
-      }
-    );
-  };
-
-  Exceptions.initializeFromDefaults = function() {
-    this.generalExceptions = Exceptions.normalize(defaultGeneralExceptions);
+  Exceptions.reinitializeFromDefaults = function() {
+    Exceptions.generalExceptions = Exceptions.normalize(defaultGeneralExceptions);
   };
 
   Exceptions.generalExceptionsAsArray = function() {
-    return _(this.generalExceptions).map(function(value, key) {
+    return _(Exceptions.generalExceptions).map(function(value, key) {
       return { key: key, value: value }
     });
   };
 
   Exceptions.updateGeneralExceptions = function(exceptions, callback) {
     var normalizedExceptions = Exceptions.normalize(exceptions);
-    this.generalExceptions = normalizedExceptions;
+    Exceptions.generalExceptions = normalizedExceptions;
     Storage.set('general-exceptions', normalizedExceptions, (value) => {
       if (callback) callback(value);
     });
@@ -4369,7 +4362,7 @@
 
   var t$1, findException;
 
-  var TibetanTransliterator = function(options = {}) {
+  const TibetanToPhonetics = function(options = {}) {
     var setting = assignValidSettingOrThrowException(options.setting);
     var rulesUsed = {};
     var exceptionsUsed = {};
@@ -4379,7 +4372,7 @@
         rulesUsed[key] = value;
       return value;
     };
-    var transliterator = {
+    var converter = {
       setting: setting,
       options: options,
       rulesUsed: rulesUsed,
@@ -4390,8 +4383,8 @@
       resetExceptionsUsed () {
         this.exceptionsUsed = exceptionsUsed = {};
       },
-      transliterate: function(tibetan, options) {
-        tibetan = removeUntranscribedPunctuationAndNormalize(tibetan);
+      convert: function(tibetan, options) {
+        tibetan = removeMuteCharsAndNormalize(tibetan);
         tibetan = this.substituteWordsWith7AsCheGo(tibetan);
         tibetan = this.substituteNumbers(tibetan);
         var groups = this.splitBySpacesOrNumbers(tibetan);
@@ -4399,7 +4392,7 @@
           if (tibetanGroup.match(/^\d+$/))
             return tibetanGroup;
           else {
-            var group = new Group(tibetanGroup, rulesUsed).transliterate();
+            var group = new Group(tibetanGroup, rulesUsed).convert();
             if (options && options.capitalize || this.options.capitalize)
               group = group.capitalize();
             return group;
@@ -4424,23 +4417,23 @@
           replace(/༧སྐྱབས/g, 'སྐྱབས');
       }
     };
-    var exceptions = new Exceptions(setting, transliterator, rulesUsed, exceptionsUsed);
+    var exceptions = new Exceptions(setting, converter, rulesUsed, exceptionsUsed);
     findException = (text) => exceptions.find(text);
-    return transliterator;
+    return converter;
   };
 
   var Group = function(tibetan, rulesUsed) {
     return {
       tibetan: tibetan,
       group: '',
-      transliterate: function() {
+      convert: function() {
         var syllable;
         this.syllables = _.compact(tibetan.trim().split('་'));
         this.groupNumberOfSyllables = this.syllables.length;
         while (syllable = this.syllables.shift()) {
           var exception = this.findLongestException(syllable, this.syllables);
           if (exception) {
-            this.group += exception.transliterated;
+            this.group += exception.converted;
             if (exception.numberOfSyllables == 1) {
               if (exception.spaceAfter) this.group += ' ';
               this.handleSecondSyllable();
@@ -4451,44 +4444,44 @@
             if (this.isLastSyllableAndStartsWithBa(syllable))
               this.group += this.BaAsWaWhenSecondSyllable(syllable);
             else {
-              var firstTransliteration = new Syllable(syllable).transliterate();
-              if (this.handleSecondSyllable(firstTransliteration, syllable));
-              else this.group += firstTransliteration;
+              var firstSyllableConverted = new Syllable(syllable).convert();
+              if (this.handleSecondSyllable(firstSyllableConverted, syllable));
+              else this.group += firstSyllableConverted;
             }
           }
         }
         return this.group.trim();
       },
-      handleSecondSyllable: function(firstTransliteration, firstTibetan) {
+      handleSecondSyllable: function(firstSyllableConverted, firstSyllableTibetan) {
         var secondSyllable = this.syllables.shift();
         if (secondSyllable) {
-          var secondTransliteration;
+          var secondSyllableConverted;
           var secondException = this.findLongestException(secondSyllable, this.syllables);
           if (secondException) {
             this.shiftSyllables(secondException.numberOfShifts);
-            secondTransliteration = secondException.transliterated;
+            secondSyllableConverted = secondException.converted;
           } else {
-            var BaAsWaTransliteration;
-            if (BaAsWaTransliteration = this.BaAsWaWhenSecondSyllable(secondSyllable))
-              secondTransliteration = BaAsWaTransliteration;
+            var BaAsWaSyllableConverted;
+            if (BaAsWaSyllableConverted = this.BaAsWaWhenSecondSyllable(secondSyllable))
+              secondSyllableConverted = BaAsWaSyllableConverted;
             else
-              secondTransliteration = new Syllable(secondSyllable).transliterate();
+              secondSyllableConverted = new Syllable(secondSyllable).convert();
           }
-          if (firstTransliteration) {
-            if (this.AngOrAm(firstTibetan) || new Syllable(firstTibetan).endingO()) {
-              this.group += firstTransliteration + ' ';
+          if (firstSyllableConverted) {
+            if (this.AngOrAm(firstSyllableTibetan) || new Syllable(firstSyllableTibetan).endingO()) {
+              this.group += firstSyllableConverted + ' ';
               // Because *-am is two syllables, we add back the second syllable
               // to the array and return so that it gets processed as the first
               // syllable of the next pair.
               this.syllables.unshift(secondSyllable);
               return true;
             }
-            firstTransliteration = this.connectWithDashIfNecessaryForReadability(firstTransliteration, secondTransliteration);
-            firstTransliteration = this.handleDuplicateConnectingLetters(firstTransliteration, secondTransliteration);
-            firstTransliteration = this.handleDoubleS(firstTransliteration, secondTransliteration);
-            this.group += firstTransliteration;
+            firstSyllableConverted = this.connectWithDashIfNecessaryForReadability(firstSyllableConverted, secondSyllableConverted);
+            firstSyllableConverted = this.handleDuplicateConnectingLetters(firstSyllableConverted, secondSyllableConverted);
+            firstSyllableConverted = this.handleDoubleS(firstSyllableConverted, secondSyllableConverted);
+            this.group += firstSyllableConverted;
           }
-          this.group += secondTransliteration + ' ';
+          this.group += secondSyllableConverted + ' ';
           return true;
         }
       },
@@ -4577,7 +4570,7 @@
     var object = _.omit(parsed, (_.functions(parsed)));
     return _(object).extend({
       syllable: syllable,
-      transliterate: function() {
+      convert: function() {
         var consonant = this.consonant();
         if (consonant == undefined) {
           syllablesWithUnknownConsonant.push(syllable);
@@ -4761,10 +4754,10 @@
 
   exports.Exceptions = Exceptions;
   exports.Settings = Settings;
-  exports.TibetanTransliterator = TibetanTransliterator;
+  exports.TibetanToPhonetics = TibetanToPhonetics;
   exports.baseRules = baseRules;
   exports.defaultSettings = defaultSettings;
-  exports.removeUntranscribedPunctuationAndNormalize = removeUntranscribedPunctuationAndNormalize;
+  exports.removeMuteCharsAndNormalize = removeMuteCharsAndNormalize;
   exports.syllablesWithUnknownConsonant = syllablesWithUnknownConsonant;
 
   Object.defineProperty(exports, '__esModule', { value: true });

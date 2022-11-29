@@ -6,13 +6,13 @@
 |
 | - a colon                     <= If you forget any colon, the app won't work.
 |
-| - some text in single         <= How it will be transcribed in the end.
+| - some text in single         <= How it will be converted in the end.
 |   or double quotes               If the text includes single quotes,
 |                                  then it is wrapped in double quotes.
 |
 | - a comma                     <= If you forget any comma, the app won't work.
 |
-| For instance, ཁྱེན will be transliterated by replacing each part one by one,
+| For instance, ཁྱེན will be converted by replacing each part one by one,
 | using these rules:
 |
 | - khaYata         => 'khy'

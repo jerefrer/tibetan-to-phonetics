@@ -3,33 +3,33 @@ var { runTestGroup } = require('../helpers.js');
 runTestGroup({
   name: 'Numbers',
   tests: [
-    { tibetan: '༠',  transliteration:  '0'},
-    { tibetan: '༡',  transliteration:  '1'},
-    { tibetan: '༢',  transliteration:  '2'},
-    { tibetan: '༣',  transliteration:  '3'},
-    { tibetan: '༤',  transliteration:  '4'},
-    { tibetan: '༥',  transliteration:  '5'},
-    { tibetan: '༦',  transliteration:  '6'},
-    { tibetan: '༧',  transliteration:  '7'},
-    { tibetan: '༨',  transliteration:  '8'},
-    { tibetan: '༩',  transliteration:  '9'},
-    { tibetan: '༡༠',  transliteration: '10'},
-    { tibetan: '༢༡',  transliteration: '21'},
-    { tibetan: '༢༠༠༠', transliteration: '2000'},
-    { tibetan: '༢༡༢༧', transliteration: '2127'},
-    { tibetan: '༢༠༠༠ ༢༡༢༧ ༣ ༢༡', transliteration: '2000 2127 3 21'},
-    { tibetan: '༡༢༣༤༥', transliteration: '12345'},
+    { tibetan: '༠',  converted:  '0'},
+    { tibetan: '༡',  converted:  '1'},
+    { tibetan: '༢',  converted:  '2'},
+    { tibetan: '༣',  converted:  '3'},
+    { tibetan: '༤',  converted:  '4'},
+    { tibetan: '༥',  converted:  '5'},
+    { tibetan: '༦',  converted:  '6'},
+    { tibetan: '༧',  converted:  '7'},
+    { tibetan: '༨',  converted:  '8'},
+    { tibetan: '༩',  converted:  '9'},
+    { tibetan: '༡༠',  converted: '10'},
+    { tibetan: '༢༡',  converted: '21'},
+    { tibetan: '༢༠༠༠', converted: '2000'},
+    { tibetan: '༢༡༢༧', converted: '2127'},
+    { tibetan: '༢༠༠༠ ༢༡༢༧ ༣ ༢༡', converted: '2000 2127 3 21'},
+    { tibetan: '༡༢༣༤༥', converted: '12345'},
     {
       tibetan: 'ཨོཾ་ཨཱཿཧཱུཾ། ༣ ཧ་ཧོ་ཧྲཱི། ༡', // With spaces
-      transliteration: 'om ah hung 3 ha ho hri 1'
+      converted: 'om ah hung 3 ha ho hri 1'
     },
     {
       tibetan: 'ཨོཾ་ཨཱཿཧཱུཾ་༣་ཧ་ཧོ་ཧྲཱི་༡་', // With tsheks
-      transliteration: 'om ah hung 3 ha ho hri 1'
+      converted: 'om ah hung 3 ha ho hri 1'
     },
     {
       tibetan: 'ཨོཾ་ཨཱཿཧཱུཾ༣ཧ་ཧོ་ཧྲཱི༡', // With nothing
-      transliteration: 'om ah hung 3 ha ho hri 1'
+      converted: 'om ah hung 3 ha ho hri 1'
     },
   ]
 })

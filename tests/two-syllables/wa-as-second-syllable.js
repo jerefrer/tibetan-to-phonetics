@@ -22,24 +22,24 @@ var { runTestGroup } = require('../helpers.js');
 runTestGroup({
   name: 'Wa as second syllable - First syllable ending with ra should yield Wa',
   tests: [
-    { tibetan: 'འཕིར་བ་',  transliteration: "p'irwa" },
-    { tibetan: 'བར་བ་',  transliteration: 'parwa' },
-    { tibetan: 'བར་བར་',  transliteration: 'parwar' },
-    { tibetan: 'བར་བའོ་',  transliteration: 'parwa-o' },
-    { tibetan: 'བར་བོ་', transliteration: 'parwo' },
-    { tibetan: 'བར་བོར་', transliteration: 'parwor' },
-    { tibetan: 'བར་བོས་', transliteration: 'parwö' },
-    { tibetan: 'བར་བས་',  transliteration: 'parwé' },
-    { tibetan: 'བར་བའི་', transliteration: 'parwé' },
-    { tibetan: 'བར་བའམ་', transliteration: 'parwa-am' },
-    { tibetan: 'བར་བའང་', transliteration: 'parwa-ang' },
+    { tibetan: 'འཕིར་བ་',  converted: "p'irwa" },
+    { tibetan: 'བར་བ་',  converted: 'parwa' },
+    { tibetan: 'བར་བར་',  converted: 'parwar' },
+    { tibetan: 'བར་བའོ་',  converted: 'parwa-o' },
+    { tibetan: 'བར་བོ་', converted: 'parwo' },
+    { tibetan: 'བར་བོར་', converted: 'parwor' },
+    { tibetan: 'བར་བོས་', converted: 'parwö' },
+    { tibetan: 'བར་བས་',  converted: 'parwé' },
+    { tibetan: 'བར་བའི་', converted: 'parwé' },
+    { tibetan: 'བར་བའམ་', converted: 'parwa-am' },
+    { tibetan: 'བར་བའང་', converted: 'parwa-ang' },
   ]
 })
 
 runTestGroup({
   name: 'Wa as second syllable - First syllable ending with nga should yield Wa',
   tests: [
-    { tibetan: 'གནང་བ་',  transliteration: 'nangwa' },
+    { tibetan: 'གནང་བ་',  converted: 'nangwa' },
   ]
 })
 
@@ -47,7 +47,7 @@ runTestGroup({
 runTestGroup({
   name: "Wa as second syllable - First syllable ending with 'a should yield Wa",
   tests: [
-    { tibetan: 'དཀའ་བ་',  transliteration: 'kawa' },
+    { tibetan: 'དཀའ་བ་',  converted: 'kawa' },
   ]
 })
 
@@ -55,7 +55,7 @@ runTestGroup({
 runTestGroup({
   name: 'Wa as second syllable - First syllable ending with la should yield Wa',
   tests: [
-    { tibetan: 'མཇལ་བ་',  transliteration: 'jelwa' },
+    { tibetan: 'མཇལ་བ་',  converted: 'jelwa' },
   ]
 })
 
@@ -63,16 +63,16 @@ runTestGroup({
 runTestGroup({
   name: 'Wa as second syllable - First syllable ending with no suffix should yield Wa',
   tests: [
-    { tibetan: 'འགྲོ་བ་',  transliteration: 'drowa' },
+    { tibetan: 'འགྲོ་བ་',  converted: 'drowa' },
   ]
 })
 
-// Trying to cover this one actually generates many inaccurate transliterations
+// Trying to cover this one actually generates many inaccurate converteds
 // in other weird cases, and it might not be necessary at all. See question above.
 //
 // runTestGroup({
 //   name: 'Wa as second syllable - First syllable ending with anything else should yield Pa',
 //   tests: [
-//     { tibetan: 'བྱེད་བ་',  transliteration: 'chépa' },
+//     { tibetan: 'བྱེད་བ་',  converted: 'chépa' },
 //   ]
 // })

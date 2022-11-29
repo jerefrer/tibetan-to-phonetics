@@ -4,75 +4,75 @@ runTestGroup({
   name: 'Suffixes',
   tests: [
     // da/sa: ümlaut & silent
-    { tibetan: 'པད', transliteration: 'pé' },
-    { tibetan: 'རྒྱད', transliteration: 'gyé' },
-    { tibetan: 'པས', transliteration: 'pé' },
-    { tibetan: 'པོས', transliteration: 'pö' },
-    { tibetan: 'རྒྱས', transliteration: 'gyé' },
+    { tibetan: 'པད', converted: 'pé' },
+    { tibetan: 'རྒྱད', converted: 'gyé' },
+    { tibetan: 'པས', converted: 'pé' },
+    { tibetan: 'པོས', converted: 'pö' },
+    { tibetan: 'རྒྱས', converted: 'gyé' },
 
     // na: ümlaut & pronounced & nasalazies
-    { tibetan: 'པན', transliteration: 'pen' },
-    { tibetan: 'རྒྱན', transliteration: 'gyen' },
+    { tibetan: 'པན', converted: 'pen' },
+    { tibetan: 'རྒྱན', converted: 'gyen' },
 
     // la: ümlauts & pronounced & softens
-    { tibetan: 'པལ', transliteration: 'pel' },
-    { tibetan: 'རྒྱལ', transliteration: 'gyel' },
-    { tibetan: 'རྒྱེལ', transliteration: 'gyel' },
+    { tibetan: 'པལ', converted: 'pel' },
+    { tibetan: 'རྒྱལ', converted: 'gyel' },
+    { tibetan: 'རྒྱེལ', converted: 'gyel' },
 
     // ka/pa : pronounced & softens
-    { tibetan: 'ལག', transliteration: 'lak' },
-    { tibetan: 'ལེག', transliteration: 'lek' },
-    { tibetan: 'འཕགས', transliteration: "p'ak" },
-    { tibetan: 'ལབ', transliteration: "lap" },
-    { tibetan: 'ལེབ', transliteration: "lep" },
-    { tibetan: 'གྲུབ', transliteration: "trup" },
+    { tibetan: 'ལག', converted: 'lak' },
+    { tibetan: 'ལེག', converted: 'lek' },
+    { tibetan: 'འཕགས', converted: "p'ak" },
+    { tibetan: 'ལབ', converted: "lap" },
+    { tibetan: 'ལེབ', converted: "lep" },
+    { tibetan: 'གྲུབ', converted: "trup" },
 
     // nga/ma: pronounced & softens
-    { tibetan: 'ཁང', transliteration: 'khang' },
-    { tibetan: 'ཆུང', transliteration: 'chung' },
-    { tibetan: 'མཉམ', transliteration: 'nyam' },
-    { tibetan: 'ལམ', transliteration: 'lam' },
-    { tibetan: 'སྟེང', transliteration: 'teng' },
+    { tibetan: 'ཁང', converted: 'khang' },
+    { tibetan: 'ཆུང', converted: 'chung' },
+    { tibetan: 'མཉམ', converted: 'nyam' },
+    { tibetan: 'ལམ', converted: 'lam' },
+    { tibetan: 'སྟེང', converted: 'teng' },
 
     // ra: pronounced
-    { tibetan: 'མར', transliteration: 'mar' },
-    { tibetan: 'ཐར', transliteration: 'thar' },
+    { tibetan: 'མར', converted: 'mar' },
+    { tibetan: 'ཐར', converted: 'thar' },
 
     // ': not pronounced
-    { tibetan: 'བཀའ', transliteration: 'ka' },
-    { tibetan: 'བགའ', transliteration: 'ga' },
+    { tibetan: 'བཀའ', converted: 'ka' },
+    { tibetan: 'བགའ', converted: 'ga' },
 
     // 'i as dreldra
-    { tibetan: 'བགའི',  transliteration: 'gé' },
-    { tibetan: 'བགིའི', transliteration: 'gi' },
-    { tibetan: 'བགུའི', transliteration: 'gü' },
-    { tibetan: 'བགེའི', transliteration: 'gé' },
-    { tibetan: 'བགོའི', transliteration: 'gö' },
+    { tibetan: 'བགའི',  converted: 'gé' },
+    { tibetan: 'བགིའི', converted: 'gi' },
+    { tibetan: 'བགུའི', converted: 'gü' },
+    { tibetan: 'བགེའི', converted: 'gé' },
+    { tibetan: 'བགོའི', converted: 'gö' },
 
     // 'o as ending particle
-    { tibetan: 'བགའོ',  transliteration: 'ga-o' },
-    { tibetan: 'བགིའོ', transliteration: 'gi-o' },
-    { tibetan: 'བགུའོ', transliteration: 'gu-o' },
-    { tibetan: 'བགེའོ', transliteration: 'gé-o' },
-    { tibetan: 'བགོའོ', transliteration: 'go-o' },
+    { tibetan: 'བགའོ',  converted: 'ga-o' },
+    { tibetan: 'བགིའོ', converted: 'gi-o' },
+    { tibetan: 'བགུའོ', converted: 'gu-o' },
+    { tibetan: 'བགེའོ', converted: 'gé-o' },
+    { tibetan: 'བགོའོ', converted: 'go-o' },
 
     // 'm as and/or particle
-    { tibetan: 'པའང',  transliteration: 'pa-ang' },
+    { tibetan: 'པའང',  converted: 'pa-ang' },
 
     // 'ng as concessive particle
-    { tibetan: 'པའམ',  transliteration: 'pa-am' },
+    { tibetan: 'པའམ',  converted: 'pa-am' },
 
     // 'u for specific words
-    { tibetan: 'བེའུ', transliteration: 'pé-u' },
-    { tibetan: 'མིའུ', transliteration: 'mi-u' },
-    { tibetan: 'ཀུའུ', transliteration: 'ku-u' },
-    { tibetan: 'ཀྲུའུ', transliteration: 'tru-u' },
-    { tibetan: 'ཕྱུའུ', transliteration: 'chu-u' },
-    { tibetan: 'ནེའུ', transliteration: 'né-u' },
-    { tibetan: 'རྡེའུ', transliteration: 'dé-u' },
-    { tibetan: 'མདེའུ', transliteration: 'dé-u' },
-    { tibetan: 'དྲེའུ', transliteration: 'tré-u' },
-    { tibetan: 'མཐེའུ', transliteration: 'thé-u' },
-    { tibetan: 'སྒྱེའུ', transliteration: 'gyé-u' },
+    { tibetan: 'བེའུ', converted: 'pé-u' },
+    { tibetan: 'མིའུ', converted: 'mi-u' },
+    { tibetan: 'ཀུའུ', converted: 'ku-u' },
+    { tibetan: 'ཀྲུའུ', converted: 'tru-u' },
+    { tibetan: 'ཕྱུའུ', converted: 'chu-u' },
+    { tibetan: 'ནེའུ', converted: 'né-u' },
+    { tibetan: 'རྡེའུ', converted: 'dé-u' },
+    { tibetan: 'མདེའུ', converted: 'dé-u' },
+    { tibetan: 'དྲེའུ', converted: 'tré-u' },
+    { tibetan: 'མཐེའུ', converted: 'thé-u' },
+    { tibetan: 'སྒྱེའུ', converted: 'gyé-u' },
   ]
 })

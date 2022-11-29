@@ -1,13 +1,23 @@
 import { _ } from '../node_modules/underscore/underscore.js';
 
 import { baseRules } from '../settings/base.js';
-import { defaultSettings } from '../settings/all.js';
+import { defaultSettings as rawDefaultSettings } from '../settings/all.js';
 
-var defaultSettingId = 'english-semi-strict';
+const defaultSettingId = 'english-semi-strict';
 
-export var Settings = {
+const defaultsMissingRulesToBaseRules = function(setting) {
+  setting.isDefault = true;
+  _(setting.rules).defaults(baseRules);
+  return setting;
+}
+
+const defaultSettings =
+  rawDefaultSettings.map((setting) => defaultsMissingRulesToBaseRules(setting));
+
+export const Settings = {
+  defaultSettings: defaultSettings,
   defaultSettingId: defaultSettingId,
-  settings: [],
+  settings: defaultSettings,
   all () {
     return this.settings;
   },
@@ -20,11 +30,11 @@ export var Settings = {
   find: function(settingId, options = {}) {
     if (!settingId) return;
     if (settingId.toString().match(/^\d*$/)) settingId = parseInt(settingId);
-    return _(this.settings).findWhere({id: settingId});
+    return _(this.settings).findWhere({ id: settingId });
   },
   findOriginal: function(settingId, options = {}) {
-    var setting = _(defaultSettings).findWhere({id: settingId});
-    return this.initializeSetting(setting);
+    var setting = _(defaultSettings).findWhere({ id: settingId });
+    return defaultsMissingRulesToBaseRules(setting);
   },
   update(settingId, name, rules, exceptions) {
     var setting = this.find(settingId);
@@ -59,8 +69,11 @@ export var Settings = {
         Storage.set('selectedSettingId', defaultSettingId);
     })
   },
+  replaceAllWith(newSettings) {
+    this.settings = newSettings;
+  },
   reset(callback) {
-    this.settings = this.initializedDefaultSettings();
+    this.settings = this.defaultSettings;
     this.updateStore(callback);
   },
   maxId () {
@@ -75,23 +88,6 @@ export var Settings = {
     Storage.set('settings', this.settings, (value) => {
       if (callback) callback(value);
     });
-  },
-  initializedDefaultSettings () {
-    return defaultSettings.map((setting) => this.initializeSetting(setting));
-  },
-  initializeFromDefaults() {
-    this.settings = this.initializedDefaultSettings();
-  },
-  initializeFromStorage (callback) {
-    Storage.get('settings', this.initializedDefaultSettings(), (value) => {
-      this.settings = value;
-      callback();
-    })
-  },
-  initializeSetting (setting) {
-    setting.isDefault = true;
-    _(setting.rules).defaults(baseRules);
-    return setting;
   },
   numberOfSpecificRules (setting) {
     return _(setting.rules)

@@ -6,10 +6,10 @@ runTestGroup({
     endEqualsStart: 'merge'
   },
   tests: [
-    { tibetan: 'སངས་རྒྱས་',  transliteration: 'sangyé' },
-    { tibetan: 'བསམ་མི་', transliteration: 'sami' },
-    { tibetan: 'རིགས་ཀྱི་', transliteration: 'rikyi' },
-    { tibetan: 'གཞོན་ནུ', transliteration: 'zhönu' },
+    { tibetan: 'སངས་རྒྱས་',  converted: 'sangyé' },
+    { tibetan: 'བསམ་མི་', converted: 'sami' },
+    { tibetan: 'རིགས་ཀྱི་', converted: 'rikyi' },
+    { tibetan: 'གཞོན་ནུ', converted: 'zhönu' },
   ]
 })
 
@@ -19,10 +19,10 @@ runTestGroup({
     endEqualsStart: 'dash'
   },
   tests: [
-    { tibetan: 'སངས་རྒྱས་',  transliteration: 'sang-gyé' },
-    { tibetan: 'བསམ་མི་', transliteration: 'sam-mi' },
-    { tibetan: 'རིགས་ཀྱི་', transliteration: 'rik-kyi' },
-    { tibetan: 'གཞོན་ནུ', transliteration: 'zhön-nu' },
+    { tibetan: 'སངས་རྒྱས་',  converted: 'sang-gyé' },
+    { tibetan: 'བསམ་མི་', converted: 'sam-mi' },
+    { tibetan: 'རིགས་ཀྱི་', converted: 'rik-kyi' },
+    { tibetan: 'གཞོན་ནུ', converted: 'zhön-nu' },
   ]
 })
 
@@ -32,10 +32,10 @@ runTestGroup({
     endEqualsStart: 'space'
   },
   tests: [
-    { tibetan: 'སངས་རྒྱས་',  transliteration: 'sang gyé' },
-    { tibetan: 'བསམ་མི་', transliteration: 'sam mi' },
-    { tibetan: 'རིགས་ཀྱི་', transliteration: 'rik kyi' },
-    { tibetan: 'གཞོན་ནུ', transliteration: 'zhön nu' },
+    { tibetan: 'སངས་རྒྱས་',  converted: 'sang gyé' },
+    { tibetan: 'བསམ་མི་', converted: 'sam mi' },
+    { tibetan: 'རིགས་ཀྱི་', converted: 'rik kyi' },
+    { tibetan: 'གཞོན་ནུ', converted: 'zhön nu' },
   ]
 })
 
@@ -45,9 +45,9 @@ runTestGroup({
     endEqualsStart: 'leave'
   },
   tests: [
-    { tibetan: 'སངས་རྒྱས་',  transliteration: 'sanggyé' },
-    { tibetan: 'བསམ་མི་', transliteration: 'sammi' },
-    { tibetan: 'རིགས་ཀྱི་', transliteration: 'rikkyi' },
-    { tibetan: 'གཞོན་ནུ', transliteration: 'zhönnu' },
+    { tibetan: 'སངས་རྒྱས་',  converted: 'sanggyé' },
+    { tibetan: 'བསམ་མི་', converted: 'sammi' },
+    { tibetan: 'རིགས་ཀྱི་', converted: 'rikkyi' },
+    { tibetan: 'གཞོན་ནུ', converted: 'zhönnu' },
   ]
 })

@@ -1,8 +1,9 @@
 {
-  "name": "@jbro/tibetan-transliterator",
+  "name": "@jbro/tibetan-to-phonetics",
   "version": "0.8.0",
   "description": "A naive attempt at automatically generating reliable Tibetan transliterations based on customizable sets of rules.",
-  "main": "dist/tibetan-transliterator.umd.js",
+  "main": "dist/tibetan-to-phonetics.umd.js",
+  "module": "dist/tibetan-to-phonetics.esm.js",
   "dependencies": {
     "tibetan-normalizer": "^0.5.0",
     "tibetan-syllable-parser": "^1.0.0",
@@ -20,8 +21,8 @@
   "scripts": {
     "clean": "rm -rf ./dist && mkdir dist",
     "build": "npm run clean && npm run build:esm && npm run build:umd",
-    "build:esm": "rollup src/transliterator.js --format esm --name TibetanTransliterator --file dist/tibetan-transliterator.esm.js",
-    "build:umd": "rollup src/transliterator.js --format umd --name TibetanTransliterator --file dist/tibetan-transliterator.umd.js",
+    "build:esm": "rollup src/tibetan-to-phonetics.js --format esm --file dist/tibetan-to-phonetics.esm.js",
+    "build:umd": "rollup src/tibetan-to-phonetics.js --format umd --name TibetanToPhonetics --file dist/tibetan-to-phonetics.umd.js",
     "test": "jest --colors"
   },
   "keywords": [],

@@ -7,33 +7,33 @@ runTestGroup({
   tests: [
 
     // End link char (as in pa-o or be-u)
-    { tibetan: 'པའོ', transliteration: "pa'o" },
-    { tibetan: 'བེའུ', transliteration: "bé'u" },
+    { tibetan: 'པའོ', converted: "pa'o" },
+    { tibetan: 'བེའུ', converted: "bé'u" },
 
     // Vowels
-    { tibetan: 'པའི', transliteration: 'pé' },
+    { tibetan: 'པའི', converted: 'pé' },
 
     // Regular consonants
-    { tibetan: 'ག', transliteration: "ga" },
-    { tibetan: 'ཇ', transliteration: "ja" },
-    { tibetan: 'ད', transliteration: "da" },
-    { tibetan: 'ཕ', transliteration: "pa" },
-    { tibetan: 'ཚ', transliteration: "tsa" },
-    { tibetan: 'ཞ', transliteration: "sha" },
+    { tibetan: 'ག', converted: "ga" },
+    { tibetan: 'ཇ', converted: "ja" },
+    { tibetan: 'ད', converted: "da" },
+    { tibetan: 'ཕ', converted: "pa" },
+    { tibetan: 'ཚ', converted: "tsa" },
+    { tibetan: 'ཞ', converted: "sha" },
 
     // Ratas
     // 2nd column with rata
-    { tibetan: 'ཁྲོལ', transliteration: "tröl" },
-    { tibetan: 'ཕྲོལ', transliteration: "tröl" },
+    { tibetan: 'ཁྲོལ', converted: "tröl" },
+    { tibetan: 'ཕྲོལ', converted: "tröl" },
     // 3rd column with rata
-    { tibetan: 'གྲོལ', transliteration: "dröl" },
-    { tibetan: 'བྲོལ', transliteration: "dröl" },
-    { tibetan: 'དྲོལ', transliteration: "dröl" },
+    { tibetan: 'གྲོལ', converted: "dröl" },
+    { tibetan: 'བྲོལ', converted: "dröl" },
+    { tibetan: 'དྲོལ', converted: "dröl" },
 
     // Yatas
-    { tibetan: 'གྱ', transliteration: "gya" },
-    { tibetan: 'ཕྱ', transliteration: "cha" },
-    { tibetan: 'བྱ', transliteration: "cha" },
+    { tibetan: 'གྱ', converted: "gya" },
+    { tibetan: 'ཕྱ', converted: "cha" },
+    { tibetan: 'བྱ', converted: "cha" },
 
   ]
 });

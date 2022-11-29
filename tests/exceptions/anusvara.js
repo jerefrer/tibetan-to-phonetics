@@ -3,21 +3,21 @@ var { runTestGroup } = require('../helpers.js');
 runTestGroup({
   name: 'Exceptions - Anusvara',
   tests: [
-    { tibetan: 'ཨོཾ', transliteration: 'om' },
-    { tibetan: 'ཨོྃ', transliteration: 'om' },
-    { tibetan: 'ཨོྂ', transliteration: 'om' },
+    { tibetan: 'ཨོཾ', converted: 'om' },
+    { tibetan: 'ཨོྃ', converted: 'om' },
+    { tibetan: 'ཨོྂ', converted: 'om' },
 
-    { tibetan: 'རཾ་', transliteration: 'ram' },
-    { tibetan: 'རྃ་', transliteration: 'ram' },
-    { tibetan: 'རྂ་', transliteration: 'ram' },
-    { tibetan: 'ཡྃ་', transliteration: 'yam' },
-    { tibetan: 'ཁྂ་', transliteration: 'kham' },
+    { tibetan: 'རཾ་', converted: 'ram' },
+    { tibetan: 'རྃ་', converted: 'ram' },
+    { tibetan: 'རྂ་', converted: 'ram' },
+    { tibetan: 'ཡྃ་', converted: 'yam' },
+    { tibetan: 'ཁྂ་', converted: 'kham' },
 
-    { tibetan: 'བཾ', transliteration: 'bam' },
-    { tibetan: 'མཾ', transliteration: 'mam' },
-    { tibetan: 'ཝཾ', transliteration: 'wam' },
+    { tibetan: 'བཾ', converted: 'bam' },
+    { tibetan: 'མཾ', converted: 'mam' },
+    { tibetan: 'ཝཾ', converted: 'wam' },
 
-    { tibetan: 'ཧཾ', transliteration: 'hang' },
-    { tibetan: 'ཧུཾ', transliteration: 'hung' },
+    { tibetan: 'ཧཾ', converted: 'hang' },
+    { tibetan: 'ཧུཾ', converted: 'hung' },
   ]
 })

@@ -5,7 +5,7 @@ runTestGroup({
   exceptions: {
   },
   tests: [
-    { tibetan: '', transliteration: '' },
+    { tibetan: '', converted: '' },
   ]
 })
 
@@ -14,7 +14,7 @@ runTestGroup({
   exceptions: {
   },
   tests: [
-    { tibetan: '', transliteration: '' },
+    { tibetan: '', converted: '' },
   ]
 })
 
@@ -26,9 +26,9 @@ runTestGroup({
     'ཚེ་དཔག་མེད': 'ཚེ་པ་མེད',
   },
   tests: [
-    { tibetan: 'འོད་མཐའ་ཡས་', transliteration: 'öntha yé' },
-    { tibetan: 'སྤྱན་རས་གཟིགས་', transliteration: 'chenré zi' },
-    { tibetan: 'ཨཱཿཞེས་ལོངས་སྐུ་འགྲོ་འདུལ་སྤྱན་རས་གཟིགས།', transliteration: 'ah zhé longku drodül chenré zi' },
-    { tibetan: 'སྤྱན་རས་གཟིགས་དབང་མགོན་པོ་བྱམས་པའི་དཔལ། །', transliteration: 'chenré ziwang gönpo champé pel' },
+    { tibetan: 'འོད་མཐའ་ཡས་', converted: 'öntha yé' },
+    { tibetan: 'སྤྱན་རས་གཟིགས་', converted: 'chenré zi' },
+    { tibetan: 'ཨཱཿཞེས་ལོངས་སྐུ་འགྲོ་འདུལ་སྤྱན་རས་གཟིགས།', converted: 'ah zhé longku drodül chenré zi' },
+    { tibetan: 'སྤྱན་རས་གཟིགས་དབང་མགོན་པོ་བྱམས་པའི་དཔལ། །', converted: 'chenré ziwang gönpo champé pel' },
   ]
 })

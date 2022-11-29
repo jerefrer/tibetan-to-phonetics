@@ -7,30 +7,30 @@ runTestGroup({
   },
   tests: [
     // Double S if ends with vowel and starts with s (but not 'sh')
-    { tibetan: 'སོ་སོར་', transliteration: 'sossor' },
-    { tibetan: 'འོད་གསལ་', transliteration: 'össel' },
-    { tibetan: 'རྩ་གསུམ་', transliteration: 'tsassum' },
-    { tibetan: 'དུས་གསུམ་', transliteration: 'tüssum' },
-    { tibetan: 'ཆོས་སྲིད་', transliteration: 'chössi' },
-    { tibetan: 'བརྒྱུད་སྲུང་', transliteration: 'gyüssung' },
+    { tibetan: 'སོ་སོར་', converted: 'sossor' },
+    { tibetan: 'འོད་གསལ་', converted: 'össel' },
+    { tibetan: 'རྩ་གསུམ་', converted: 'tsassum' },
+    { tibetan: 'དུས་གསུམ་', converted: 'tüssum' },
+    { tibetan: 'ཆོས་སྲིད་', converted: 'chössi' },
+    { tibetan: 'བརྒྱུད་སྲུང་', converted: 'gyüssung' },
 
     // A few counter-examples
     // No double S if ends with n and starts with s
-    { tibetan: 'ཕུན་སུམ་', transliteration: "p'ünsum" },
+    { tibetan: 'ཕུན་སུམ་', converted: "p'ünsum" },
     // No double S if ends with l and starts with s
-    { tibetan: 'ཞལ་ཟས་', transliteration: 'zhelsé' },
+    { tibetan: 'ཞལ་ཟས་', converted: 'zhelsé' },
     // No double S if ends with r and starts with s
-    { tibetan: 'པར་གསུངས་', transliteration: 'parsung' },
+    { tibetan: 'པར་གསུངས་', converted: 'parsung' },
     // No double S if ends with m and starts with s
-    { tibetan: 'ལམ་སེལ་', transliteration: 'lamsel' },
+    { tibetan: 'ལམ་སེལ་', converted: 'lamsel' },
     // No double S if ends with k and starts with s
-    { tibetan: 'ཚིགས་སུ་', transliteration: 'tsiksu' },
+    { tibetan: 'ཚིགས་སུ་', converted: 'tsiksu' },
     // No double S if ends with g and starts with s
-    { tibetan: 'སྣང་སྲིད་', transliteration: 'nangsi' },
+    { tibetan: 'སྣང་སྲིད་', converted: 'nangsi' },
     // No double S if starts with 'sh'
-    { tibetan: 'སྨོན་ཤིས་', transliteration: 'mönshi' },
+    { tibetan: 'སྨོན་ཤིས་', converted: 'mönshi' },
     // No double S if starts with 'zh'
-    { tibetan: 'བརྩོན་ཞིང་', transliteration: 'tsönzhing' },
+    { tibetan: 'བརྩོན་ཞིང་', converted: 'tsönzhing' },
   ]
 })
 
@@ -41,11 +41,11 @@ runTestGroup({
   },
   tests: [
     // No double S if ends with vowel and starts with s (but not 'sh')
-    { tibetan: 'སོ་སོར་', transliteration: 'sosor' },
-    { tibetan: 'འོད་གསལ་', transliteration: 'ösel' },
-    { tibetan: 'རྩ་གསུམ་', transliteration: 'tsasum' },
-    { tibetan: 'དུས་གསུམ་', transliteration: 'tüsum' },
-    { tibetan: 'ཆོས་སྲིད་', transliteration: 'chösi' },
-    { tibetan: 'བརྒྱུད་སྲུང་', transliteration: 'gyüsung' },
+    { tibetan: 'སོ་སོར་', converted: 'sosor' },
+    { tibetan: 'འོད་གསལ་', converted: 'ösel' },
+    { tibetan: 'རྩ་གསུམ་', converted: 'tsasum' },
+    { tibetan: 'དུས་གསུམ་', converted: 'tüsum' },
+    { tibetan: 'ཆོས་སྲིད་', converted: 'chösi' },
+    { tibetan: 'བརྒྱུད་སྲུང་', converted: 'gyüsung' },
   ]
 })
