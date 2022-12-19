@@ -1952,11 +1952,11 @@ const spanish = {
 
 };
 
-//  ka  / kha  / ga  become ka
+//  ka  / kha  / ga  become ga
 //  bha / cha  / ja  become cha
 //  ta  / tha  / da  become ta
 //  pa  / pha  / ba  become pa
-//  kya / khya / gya become kya
+//  kya / khya / gya become gya
 //  sa  / za         become sa
 //  tra / dra        become tra
 
@@ -1985,19 +1985,20 @@ const englishSuperLoose = {
     'aKikuI': "e",           // པའི
 
     // Regular consonants
-    'kha': 'k',               // ཁ
-    'tha': 't',               // ཁ
-    'ga': 'k',               // ག
+    'ka':  'g',               // ཀ
+    'kha': 'g',               // ཁ
+    'tha': 't',               // ཐ
+    'ga': 'g',               // ག
     'ba': 'p',               // བ
     'cha': 'ch',             // ཆ
     'tsha': 'ts',            // ཚ
     'da': 't',               // ད
     'pha': 'p',              // ཕ
     'zha': 'sh',             // ཞ
-    'dza': 'ts',             // ཞ
+    'dza': 'ts',             // ཛ
 
     // Modified consonants (with prefix or superscribed)
-    'gaMod': 'k',            // རྒ
+    'gaMod': 'g',            // རྒ
     'jaMod': 'ch',           // རྗ
     'daMod': 't',            // རྡ
     'baMod': 'p',            // རྦ
@@ -2011,10 +2012,10 @@ const englishSuperLoose = {
     'hra': 'hr',             // ཧྲ
 
     // Yatas
-    'kaYata': 'k',           // ཀྱ
-    'khaYata': 'k',          // ཁྱ
-    'gaYata': 'k',           // གྱ
-    'gaModYata': 'k',        // སྒྱ / ga with yata and prefix/superscribed
+    'kaYata': 'g',           // ཀྱ
+    'khaYata': 'g',          // ཁྱ
+    'gaYata': 'g',           // གྱ
+    'gaModYata': 'g',        // སྒྱ / ga with yata and prefix/superscribed
     'paYata': 'ch',          // པྱ
     'phaYata': 'ch',         // ཕྱ
     'baYata': 'ch',          // བྱ

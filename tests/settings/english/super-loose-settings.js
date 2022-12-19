@@ -6,24 +6,24 @@ runTestGroup({
   includeInPercentage: true,
   tests: [
 
-    { tibetan: 'ཀེ', converted: 'ke' },
-    { tibetan: 'ཀོས', converted: 'ko' },
-    { tibetan: 'ཀུས', converted: 'ku' },
-    { tibetan: 'ཀེམ', converted: 'kem' },
-    { tibetan: 'ཀན', converted: 'ken' },
-    { tibetan: 'ཀེན', converted: 'ken' },
-    { tibetan: 'ཀེར', converted: 'ker' },
-    { tibetan: 'ཀེག', converted: 'kek' },
-    { tibetan: 'ཀེབ', converted: 'kep' },
-    { tibetan: 'ཀལ', converted: 'kel' },
-    { tibetan: 'ཀེལ', converted: 'kel' },
-    { tibetan: 'ཀེང', converted: 'keng' },
-    { tibetan: 'ཀའི', converted: 'ke' },
+    { tibetan: 'ཀེ', converted: 'ge' },
+    { tibetan: 'ཀོས', converted: 'go' },
+    { tibetan: 'ཀུས', converted: 'gu' },
+    { tibetan: 'ཀེམ', converted: 'gem' },
+    { tibetan: 'ཀན', converted: 'gen' },
+    { tibetan: 'ཀེན', converted: 'gen' },
+    { tibetan: 'ཀེར', converted: 'ger' },
+    { tibetan: 'ཀེག', converted: 'gek' },
+    { tibetan: 'ཀེབ', converted: 'gep' },
+    { tibetan: 'ཀལ', converted: 'gel' },
+    { tibetan: 'ཀེལ', converted: 'gel' },
+    { tibetan: 'ཀེང', converted: 'geng' },
+    { tibetan: 'ཀའི', converted: 'ge' },
 
     // Regular consonants
-    { tibetan: 'ཀ', converted: 'ka' },
-    { tibetan: 'ཁ', converted: 'ka' },
-    { tibetan: 'ག', converted: 'ka' },
+    { tibetan: 'ཀ', converted: 'ga' },
+    { tibetan: 'ཁ', converted: 'ga' },
+    { tibetan: 'ག', converted: 'ga' },
     { tibetan: 'ཅ', converted: 'cha' },
     { tibetan: 'ཆ', converted: 'cha' },
     { tibetan: 'ཇ', converted: 'cha' },
@@ -40,7 +40,7 @@ runTestGroup({
     { tibetan: 'ཞ', converted: 'sha' },
 
     // Modified consonants (with prefix or superscribed)
-    { tibetan: 'རྒ', converted: 'ka' },
+    { tibetan: 'རྒ', converted: 'ga' },
     { tibetan: 'རྗ', converted: 'cha' },
     { tibetan: 'རྡ', converted: 'ta' },
     { tibetan: 'རྦ', converted: 'pa' },
@@ -54,13 +54,13 @@ runTestGroup({
     { tibetan: 'ཧྲ', converted: 'hra' },
 
     // Yatas
-    { tibetan: 'ཀྱ', converted: 'ka' },
-    { tibetan: 'ཁྱ', converted: 'ka' },
-    { tibetan: 'གྱ', converted: 'ka' },
-    { tibetan: 'ཀྱི', converted: 'ki' },
-    { tibetan: 'ཁྱི', converted: 'ki' },
-    { tibetan: 'གྱི', converted: 'ki' },
-    { tibetan: 'སྒྱ', converted: 'ka' },
+    { tibetan: 'ཀྱ', converted: 'ga' },
+    { tibetan: 'ཁྱ', converted: 'ga' },
+    { tibetan: 'གྱ', converted: 'ga' },
+    { tibetan: 'ཀྱི', converted: 'gi' },
+    { tibetan: 'ཁྱི', converted: 'gi' },
+    { tibetan: 'གྱི', converted: 'gi' },
+    { tibetan: 'སྒྱ', converted: 'ga' },
     { tibetan: 'པྱ', converted: 'cha' },
     { tibetan: 'ཕྱ', converted: 'cha' },
     { tibetan: 'བྱ', converted: 'cha' },
@@ -73,6 +73,18 @@ runTestGroup({
 
     // Special cases
     { tibetan: 'ལྷ', converted: 'la' },
-    { tibetan: 'དགའ་བ་', converted: 'kapa' },
+    { tibetan: 'དགའ་བ་', converted: 'gapa' },
+  ]
+});
+
+runTestGroup({
+  name: 'English super loose can be used for loose phonetics matching with syllables merging',
+  setting: 'english-super-loose',
+  rules: {
+    endEqualsStart: 'merge',
+  },
+  includeInPercentage: true,
+  tests: [
+    { tibetan: 'སངས་རྒྱས་', converted: 'sange' },
   ]
 });
