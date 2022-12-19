@@ -185,6 +185,7 @@ var Group = function(tibetan, rulesUsed) {
       var sameLetter = firstSyllable.last() == secondSyllable.first();
       var endEqualsStartRule = t('endEqualsStart', false);
       if (sameLetter) {
+        rulesUsed['endEqualsStart'] = true;
         if (endEqualsStartRule == 'dash')
           return firstSyllable + '-';
         else if (endEqualsStartRule == 'space')

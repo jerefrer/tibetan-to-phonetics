@@ -4533,6 +4533,7 @@
         var sameLetter = firstSyllable.last() == secondSyllable.first();
         var endEqualsStartRule = t$1('endEqualsStart', false);
         if (sameLetter) {
+          rulesUsed['endEqualsStart'] = true;
           if (endEqualsStartRule == 'dash')
             return firstSyllable + '-';
           else if (endEqualsStartRule == 'space')
