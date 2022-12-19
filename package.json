@@ -1,7 +1,7 @@
 {
   "name": "@jbro/tibetan-to-phonetics",
   "version": "0.8.0",
-  "description": "A naive attempt at automatically generating reliable Tibetan transliterations based on customizable sets of rules.",
+  "description": "A naive attempt at automatically generating reliable Tibetan phonetics based on customizable sets of rules.",
   "main": "dist/tibetan-to-phonetics.umd.js",
   "module": "dist/tibetan-to-phonetics.esm.js",
   "dependencies": {
