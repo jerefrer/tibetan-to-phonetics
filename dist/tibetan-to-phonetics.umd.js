@@ -4758,6 +4758,7 @@
   exports.Settings = Settings;
   exports.TibetanToPhonetics = TibetanToPhonetics;
   exports.baseRules = baseRules;
+  exports.defaultGeneralExceptions = defaultGeneralExceptions;
   exports.defaultSettings = defaultSettings;
   exports.removeMuteCharsAndNormalize = removeMuteCharsAndNormalize;
   exports.syllablesWithUnknownConsonant = syllablesWithUnknownConsonant;

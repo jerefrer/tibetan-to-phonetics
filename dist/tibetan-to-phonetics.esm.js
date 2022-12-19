@@ -4748,4 +4748,4 @@ const throwBadArgumentsError = function(passedMessage) {
   )
 };
 
-export { Exceptions, Settings, TibetanToPhonetics, baseRules, defaultSettings, removeMuteCharsAndNormalize, syllablesWithUnknownConsonant };
+export { Exceptions, Settings, TibetanToPhonetics, baseRules, defaultGeneralExceptions, defaultSettings, removeMuteCharsAndNormalize, syllablesWithUnknownConsonant };
