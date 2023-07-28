@@ -70,3 +70,7 @@ function repeatString(str, num) {
   }
   return result;
 }
+
+export function deepClone(object) {
+  return JSON.parse(JSON.stringify(object));
+}

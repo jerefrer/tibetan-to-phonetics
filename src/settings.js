@@ -2,6 +2,7 @@ import { _ } from '../node_modules/underscore/underscore.js';
 
 import { baseRules } from '../settings/base.js';
 import { defaultSettings as rawDefaultSettings } from '../settings/all.js';
+import { deepClone } from './utils.js';
 
 const defaultSettingId = 'english-semi-strict';
 
@@ -50,8 +51,8 @@ export const Settings = {
       isCustom: true,
       isEditable: true,
       name: name || 'Rule set ' + id,
-      rules: _(fromSetting && fromSetting.rules || {}).defaults(baseRules),
-      exceptions: fromSetting && fromSetting.exceptions || {}
+      rules: _(fromSetting && deepClone(fromSetting.rules) || {}).defaults(baseRules),
+      exceptions: fromSetting && deepClone(fromSetting.exceptions) || {}
     })
     this.updateStore();
   },
