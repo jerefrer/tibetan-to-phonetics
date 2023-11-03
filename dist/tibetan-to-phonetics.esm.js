@@ -1579,7 +1579,7 @@ const baseRules = {
   'drengbuMaNaRa': 'e',    // མཁྱེན་ / drengbu and suffix ma, na, ra
   'drengbuGaBaLaNga': 'e', // འཕྲེང་ / drengbu and suffix ga, ba, la, nga
   'aNa': 'e',              // རྒྱན་  / no vowel and suffix na
-  'aLa': 'e',              // རྒྱལ་  / no vowel and suffix la
+  'aLa': 'a',              // རྒྱལ་  / no vowel and suffix la
   'aKikuI': "a'i",         // པའི
 
   // Regular consonants
@@ -2047,6 +2047,188 @@ defaultSettings.push(french);
 defaultSettings.push(spanish);
 defaultSettings.push(englishSuperLoose);
 
+var tibetanNormalizer = {
+
+  normalize (text) {
+    var normalized = this.normalizeCombinedLetters(text);
+    normalized = this.normalizeTsheks(normalized);
+    return normalized;
+  },
+
+  normalizeTsheks (text) {
+    return text
+      .replace(/(ཾ)([ཱཱཱེིོིྀུུ])/g, '$2$1') // Malformed: anusvara before vowel
+      .replace(/༌/g, '་') // Alternative tshek
+      .replace(/་+/g, '་'); // Multiple consecutive tsheks into one
+  },
+
+  normalizeCombinedLetters (text) {
+    return text
+      .replace(/[ ]/g, ' ')
+      .replace(/ༀ/g, 'ཨོཾ')
+      .replace(/ཀྵ/g, 'ཀྵ')
+      .replace(/བྷ/g, 'བྷ')
+      .replace(/ི+/g, 'ི')
+      .replace(/ུ+/g, 'ུ')
+      .replace(/ཱུ/g, 'ཱུ')
+      .replace(/ཱི/g, 'ཱི')
+      .replace(/ཱྀ/g, 'ཱྀ')
+      .replace(/དྷ/g, 'དྷ')
+      .replace(/གྷ/g, 'གྷ')
+      .replace(/ཪླ/g, 'རླ')
+      .replace(/ྡྷ/g, 'ྡྷ')
+      .replace(//g, '࿓༅')
+      .replace(//g, 'སྤྲ')
+      .replace(//g, 'ུ')
+      .replace(//g, 'ག')
+      .replace(//g, 'ུ')
+      .replace(//g, 'རྒྱ')
+      .replace(//g, 'གྲ')
+      .replace(//g, 'ུ')
+      .replace(//g, 'ི')
+      .replace(//g, 'བྱ')
+      .replace(//g, 'སྲ')
+      .replace(//g, 'སྒྲ')
+      .replace(//g, 'ལྷ')
+      .replace(//g, 'ོ')
+      .replace(//g, 'གྱ')
+      .replace(//g, 'རླ')
+      .replace(//g, 'ཕྱ')
+      .replace(//g, 'སྩ')
+      .replace(//g, 'རྡ')
+      .replace(//g, 'རྗ')
+      .replace(//g, 'དྲྭ')
+      .replace(//g, 'ཛྲ')
+      .replace(//g, 'ལྷྭ')
+      .replace(//g, 'སྤྱ')
+      .replace(//g, 'བྷྱ')
+      .replace(//g, 'གྷྣ')
+      .replace(//g, 'གྷྲ')
+      .replace(//g, 'ནྡྷ')
+      .replace(//g, 'ཧྣ')
+      .replace(//g, 'ཥྚ')
+      .replace(//g, 'བྷྲ')
+      .replace(//g, 'ཱུ')
+      .replace(//g, 'ཱུ')
+      .replace(//g, 'རྒྷ')
+      .replace(//g, 'ྀ')
+      .replace(//g, 'ཱ')
+      .replace(//g, 'ཱ')
+      .replace(//g, 'དྡྷྭ')
+      .replace(//g, 'ིཾ')
+      .replace(//g, 'ིཾ')
+      .replace(//g, 'ངྷ')
+  }
+
+};
+
+const removeMuteCharsAndNormalize = function (tibetan) {
+  var normalized = tibetanNormalizer.normalize(tibetan);
+  return normalized
+    .replace(/[༵\u0F04-\u0F0A\u0F0D-\u0F1F\u0F3A-\u0F3F\u0FBE-\uF269]/g, '').trim()
+    .replace(/[༔ཿ]/g, '་')
+    .replace(/[ྃྂ]/g, 'ཾ')
+    .replace(/་$/g, '');
+};
+
+// Copied from Sugar
+
+String.prototype.first = function(num) {
+  if (num == undefined) num = 1;
+  return this.substr(0, num);
+};
+
+String.prototype.last = function(num) {
+  if (num == undefined) num = 1;
+  var start = this.length - num < 0 ? 0 : this.length - num;
+  return this.substr(start);
+};
+
+String.prototype.capitalize = function(all) {
+  var lastResponded;
+  return this.toLowerCase().replace(all ? /[^']/g : /^\S/, function(lower) {
+    var upper = lower.toUpperCase(), result;
+    result = lastResponded ? lower : upper;
+    lastResponded = upper !== lower;
+    return result;
+  });
+};
+
+String.prototype.to = function(num) {
+  if(num == undefined) num = this.length;
+  return this.slice(0, num);
+};
+
+String.prototype.pad = function(num, padding) {
+  var half, front, back;
+  num   = checkRepeatRange(num);
+  half  = Math.max(0, num - this.length) / 2;
+  front = Math.floor(half);
+  back  = Math.ceil(half);
+  return padString(front, padding) + this + padString(back, padding);
+};
+
+String.prototype.array = function(all) {
+  var result = [];
+  arrayEach(this, function(el, i) {
+    if(Object.isArray(el)) {
+      result.push(el.compact());
+    } else if(all && el) {
+      result.push(el);
+    } else if(!all && el != null && el.valueOf() === el.valueOf()) {
+      result.push(el);
+    }
+  });
+  return result;
+};
+
+function arrayEach(arr, fn, startIndex, loop) {
+  var index, i, length = +arr.length;
+  if(startIndex < 0) startIndex = arr.length + startIndex;
+  i = isNaN(startIndex) ? 0 : startIndex;
+  if(loop === true) {
+    length += i;
+  }
+  while(i < length) {
+    index = i % arr.length;
+    if(!(index in arr)) {
+      return iterateOverSparseArray(arr, fn, i, loop);
+    } else if(fn.call(arr, arr[index], index, arr) === false) {
+      break;
+    }
+    i++;
+  }
+}
+
+function checkRepeatRange(num) {
+  num = +num;
+  if(num < 0 || num === Infinity) {
+    throw new RangeError('Invalid number');
+  }
+  return num;
+}
+
+function padString(num, padding) {
+  return repeatString(padding !== undefined ? padding : ' ', num);
+}
+
+function repeatString(str, num) {
+  var result = '', str = str.toString();
+  while (num > 0) {
+    if (num & 1) {
+      result += str;
+    }
+    if (num >>= 1) {
+      str += str;
+    }
+  }
+  return result;
+}
+
+function deepClone(object) {
+  return JSON.parse(JSON.stringify(object));
+}
+
 const defaultSettingId = 'english-semi-strict';
 
 const defaultsMissingRulesToBaseRules = function(setting) {
@@ -2094,8 +2276,8 @@ const Settings = {
       isCustom: true,
       isEditable: true,
       name: name || 'Rule set ' + id,
-      rules: _(fromSetting && fromSetting.rules || {}).defaults(baseRules),
-      exceptions: fromSetting && fromSetting.exceptions || {}
+      rules: _(fromSetting && deepClone(fromSetting.rules) || {}).defaults(baseRules),
+      exceptions: fromSetting && deepClone(fromSetting.exceptions) || {}
     });
     this.updateStore();
   },
@@ -2358,131 +2540,14 @@ const defaultGeneralExceptions = {
   'རསྟུ': 'ར_sཏུ',
   'བཻ་ཌཱུརྻ': 'ben_du_rya',
   'སེངྒེ': 'སེང་སྒེ',
+  'བྷནྡྷ': 'bhan_dha',
+  'ས་དྷཱུ་': 'sa_dhཨུ',
+  'རཀ': 'rak',
+  'བྷ་ལིཾ་ཏ': 'ba_ling_ta',
+  'དེ་བཱི': 'dé_vi',
+  'ཤྭ་ན': 'ཤོ་ན',
+  'ནཱ་གརྫུ་ན': 'na_gar_ju_na',
 };
-
-var tibetanNormalizer = {
-
-  normalize (text) {
-    var normalized = this.normalizeCombinedLetters(text);
-    normalized = this.normalizeTsheks(normalized);
-    return normalized;
-  },
-
-  normalizeTsheks (text) {
-    return text
-      .replace(/(ཾ)([ཱཱཱེིོིྀུུ])/g, '$2$1') // Malformed: anusvara before vowel
-      .replace(/༌/g, '་') // Alternative tshek
-      .replace(/་+/g, '་'); // Multiple consecutive tsheks into one
-  },
-
-  normalizeCombinedLetters (text) {
-    return text
-      .replace(/ༀ/g, 'ཨོཾ')
-      .replace(/ཀྵ/g, 'ཀྵ')
-      .replace(/བྷ/g, 'བྷ')
-      .replace(/ཱུ/g, 'ཱུ')
-      .replace(/ཱི/g, 'ཱི')
-      .replace(/ཱྀ/g, 'ཱྀ')
-      .replace(/དྷ/g, 'དྷ')
-      .replace(/གྷ/g, 'གྷ')
-      .replace(/ཪླ/g, 'རླ')
-      .replace(/ྡྷ/g, 'ྡྷ')
-      .replace(//g, '࿓༅')
-      .replace(//g, 'སྤྲ')
-      .replace(//g, 'ུ')
-      .replace(//g, 'ག')
-      .replace(//g, 'ུ')
-      .replace(//g, 'རྒྱ')
-      .replace(//g, 'གྲ')
-      .replace(//g, 'ུ')
-      .replace(//g, 'ི')
-      .replace(//g, 'བྱ')
-      .replace(//g, 'སྲ')
-      .replace(//g, 'སྒྲ')
-      .replace(//g, 'ལྷ')
-      .replace(//g, 'ོ')
-      .replace(//g, 'གྱ')
-      .replace(//g, 'རླ')
-      .replace(//g, 'ཕྱ')
-      .replace(//g, 'སྩ')
-      .replace(//g, 'རྡ')
-      .replace(//g, 'རྗ')
-      .replace(//g, 'དྲྭ')
-      .replace(//g, 'ཛྲ')
-  }
-
-};
-
-const removeMuteCharsAndNormalize = function (tibetan) {
-  var normalized = tibetanNormalizer.normalize(tibetan);
-  return normalized
-    .replace(/[༵\u0F04-\u0F0A\u0F0D-\u0F1F\u0F3A-\u0F3F\u0FBE-\uF269]/g, '').trim()
-    .replace(/[༔ཿ]/g, '་')
-    .replace(/[ྃྂ]/g, 'ཾ')
-    .replace(/་$/g, '');
-};
-
-// Copied from Sugar
-
-String.prototype.first = function(num) {
-  if (num == undefined) num = 1;
-  return this.substr(0, num);
-};
-
-String.prototype.last = function(num) {
-  if (num == undefined) num = 1;
-  var start = this.length - num < 0 ? 0 : this.length - num;
-  return this.substr(start);
-};
-
-String.prototype.capitalize = function(all) {
-  var lastResponded;
-  return this.toLowerCase().replace(all ? /[^']/g : /^\S/, function(lower) {
-    var upper = lower.toUpperCase(), result;
-    result = lastResponded ? lower : upper;
-    lastResponded = upper !== lower;
-    return result;
-  });
-};
-
-String.prototype.to = function(num) {
-  if(num == undefined) num = this.length;
-  return this.slice(0, num);
-};
-
-String.prototype.pad = function(num, padding) {
-  var half, front, back;
-  num   = checkRepeatRange(num);
-  half  = Math.max(0, num - this.length) / 2;
-  front = Math.floor(half);
-  back  = Math.ceil(half);
-  return padString(front, padding) + this + padString(back, padding);
-};
-
-function checkRepeatRange(num) {
-  num = +num;
-  if(num < 0 || num === Infinity) {
-    throw new RangeError('Invalid number');
-  }
-  return num;
-}
-
-function padString(num, padding) {
-  return repeatString(padding !== undefined ? padding : ' ', num);
-}
-
-function repeatString(str, num) {
-  var result = '', str = str.toString();
-  while (num > 0) {
-    if (num & 1) {
-      result += str;
-    }
-    if (num >>= 1) {
-      str += str;
-    }
-  }
-  return result;
-}
 
 var t;
 
@@ -4684,7 +4749,7 @@ var Syllable = function(syllable) {
       return this.aKikuI() || (this.suffix && this.suffix.match(/[ལསདནཎ]/));
     },
     daoWa: function() {
-      return this.syllable.match(/^དབ[ྱ]?[ིེོུ]?[ངསགརལདའབ]?[ིས]?$/);
+      return this.syllable.match(/^དབ[ྱ]?[ིེོུ]?[ངསགརལདའབནམ]?[ིས]?$/);
     },
     aKikuI: function() {
       return this.syllable.match(/འི$/);
