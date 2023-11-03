@@ -389,7 +389,7 @@ var Syllable = function(syllable) {
       return this.aKikuI() || (this.suffix && this.suffix.match(/[ལསདནཎ]/));
     },
     daoWa: function() {
-      return this.syllable.match(/^དབ[ྱ]?[ིེོུ]?[ངསགརལདའབ]?[ིས]?$/);
+      return this.syllable.match(/^དབ[ྱ]?[ིེོུ]?[ངསགརལདའབནམ]?[ིས]?$/);
     },
     aKikuI: function() {
       return this.syllable.match(/འི$/);
