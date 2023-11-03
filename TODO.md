@@ -45,9 +45,16 @@
 * Would there be a way to automate links between syllables? (i.e. ཡ་**མ**ཚན)
   * It seems there aren't any hard rules (i.e. John Rockwell's prefixes 1.a.5)
   * For now we handle every case as an exception
-* How to pronounce དབའ?
-  * Wa?
-  * Ba?
+* Dao-wa
+  * དབུན
+    * ün ?
+    * wun ?
+  * དབེན
+    * en ?
+    * wen ?
+  * How to pronounce དབའ?
+    * Wa?
+    * Ba?
 * དྭངས
   * Tang?
   * Dang?
@@ -83,6 +90,7 @@
 * French: DoubleS only between vowels, or are there other cases?
 
 ## Special cases
+* Handle "Chang te'u" as phonetics to match ཅང་ཏེའུ་
 * པའང and པའམ are handled, but can there be things such as གྱེའང་ or བགའོང་?
   * Should they be included in the possible modifiers after exceptions?
 * རྱ
