@@ -10,7 +10,7 @@ var { TibetanToPhonetics, Settings, Exceptions } = require('../dist/tibetan-to-p
   const runTestGroup = function(testGroup) {
     describe(testGroup.name, function() {
       _(testGroup.tests).each(function(test) {
-        var func = (testGroup.pending || test.pending) ? pending : it;
+        var func = (testGroup.pending || test.pending) ? it.skip : it;
         func(test.tibetan, function() {
           var setting =
             testGroup.setting

@@ -1,4 +1,4 @@
-import { _ } from '../node_modules/underscore/underscore.js';
+import _ from 'underscore';
 
 import { baseRules } from '../settings/base.js';
 import { defaultSettings as rawDefaultSettings } from '../settings/all.js';

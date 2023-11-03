@@ -1,4 +1,4 @@
-import { _ } from '../node_modules/underscore/underscore.js';
+import _ from 'underscore';
 
 import { defaultGeneralExceptions } from '../settings/exceptions.js';
 import { removeMuteCharsAndNormalize } from './utils';

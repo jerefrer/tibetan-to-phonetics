@@ -1,5 +1,4 @@
 module.exports = {
-  testEnvironment: 'jest-environment-jsdom-fourteen',
   moduleFileExtensions: [
     "js"
   ],
@@ -16,17 +15,7 @@ module.exports = {
     'helpers.js',
     'ignored',
   ],
-  testURL: "http://localhost/",
- // testEnvironment: "node",
   transformIgnorePatterns: [
     "node_modules/(?!(babel-jest|jest-vue-preprocessor)/)"
-  ],
-  // coverageDirectory: 'coverage',
-  // coverageReporters: ['json', 'lcov', 'text-summary', 'clover'],
-  // collectCoverageFrom: [
-  //   'src/**/*.js'
-  // ],
-  snapshotSerializers: [
-    'jest-serializer-html',
-  ],
+  ]
 };

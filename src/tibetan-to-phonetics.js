@@ -1,10 +1,10 @@
-import { _ } from '../node_modules/underscore/underscore.js';
+import _ from 'underscore';
 
 import { Settings } from './settings.js';
 import { baseRules } from '../settings/base.js';
 import { Exceptions } from './exceptions.js';
 import { removeMuteCharsAndNormalize } from './utils';
-import { TibetanSyllableParser } from '../../tibetan-syllable-parser/dist/tibetan-syllable-parser.esm.js';
+import { TibetanSyllableParser } from 'tibetan-syllable-parser';
 
 export var syllablesWithUnknownConsonant = [];
 export { Settings } from './settings.js';

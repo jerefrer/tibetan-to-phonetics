@@ -24,6 +24,7 @@
 * Optionally use dictionary to group words together? Is that even possible?
 
 ## Tests
+* Improve testing environment to avoid having to build before running tests, if at all possible
 * Test rulesUsed and exceptionsUsed
 * Pass the test of "Künkyi tsémo ösel chokmin_gyur" in Exceptions - Spaces
 * Add tests for spaces before/after, exception or not

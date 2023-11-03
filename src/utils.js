@@ -1,4 +1,4 @@
-import TibetanNormalizer from '../../tibetan-normalizer/dist/tibetan-normalizer.esm.js';
+import TibetanNormalizer from 'tibetan-normalizer';
 
 export const removeMuteCharsAndNormalize = function (tibetan) {
   var normalized = TibetanNormalizer.normalize(tibetan);
