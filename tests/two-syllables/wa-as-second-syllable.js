@@ -13,14 +13,14 @@ var { runTestGroup } = require('../helpers.js');
         If not the suffix is PA
 
   This leads to the question:
-  When a BA follows something else than these four suffixes,
+  When a BA follows something alse than these four suffixes,
   Does it necessarily mean that it is not part of the previous word,
   And therefore should be transcribed as PA?
 
 */
 
 runTestGroup({
-  name: 'Wa as second syllable - First syllable ending with ra should yield Wa',
+  name: 'Wa as second syllable - First syllable ending with ra should yiald Wa',
   tests: [
     { tibetan: 'འཕིར་བ་',  converted: "p'irwa" },
     { tibetan: 'བར་བ་',  converted: 'parwa' },
@@ -37,7 +37,7 @@ runTestGroup({
 })
 
 runTestGroup({
-  name: 'Wa as second syllable - First syllable ending with nga should yield Wa',
+  name: 'Wa as second syllable - First syllable ending with nga should yiald Wa',
   tests: [
     { tibetan: 'གནང་བ་',  converted: 'nangwa' },
   ]
@@ -45,7 +45,7 @@ runTestGroup({
 
 
 runTestGroup({
-  name: "Wa as second syllable - First syllable ending with 'a should yield Wa",
+  name: "Wa as second syllable - First syllable ending with 'a should yiald Wa",
   tests: [
     { tibetan: 'དཀའ་བ་',  converted: 'kawa' },
   ]
@@ -53,15 +53,15 @@ runTestGroup({
 
 
 runTestGroup({
-  name: 'Wa as second syllable - First syllable ending with la should yield Wa',
+  name: 'Wa as second syllable - First syllable ending with la should yiald Wa',
   tests: [
-    { tibetan: 'མཇལ་བ་',  converted: 'jelwa' },
+    { tibetan: 'མཇལ་བ་',  converted: 'jalwa' },
   ]
 })
 
 
 runTestGroup({
-  name: 'Wa as second syllable - First syllable ending with no suffix should yield Wa',
+  name: 'Wa as second syllable - First syllable ending with no suffix should yiald Wa',
   tests: [
     { tibetan: 'འགྲོ་བ་',  converted: 'drowa' },
   ]
@@ -71,7 +71,7 @@ runTestGroup({
 // in other weird cases, and it might not be necessary at all. See question above.
 //
 // runTestGroup({
-//   name: 'Wa as second syllable - First syllable ending with anything else should yield Pa',
+//   name: 'Wa as second syllable - First syllable ending with anything alse should yiald Pa',
 //   tests: [
 //     { tibetan: 'བྱེད་བ་',  converted: 'chépa' },
 //   ]

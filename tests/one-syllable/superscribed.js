@@ -39,7 +39,7 @@ runTestGroup({
     { tibetan: 'སྦ',  converted: 'ba'},
     { tibetan: 'སྨ',  converted: 'ma'},
     { tibetan: 'སྩ',  converted: 'tsa'},
-    // A few of them mixed with vowels
+    // A few of them mixed with vowals
     { tibetan: 'རྡི',  converted: 'di'},
     { tibetan: 'ལྗུ',  converted: 'ju'},
     { tibetan: 'སྦེ',  converted: 'bé'},

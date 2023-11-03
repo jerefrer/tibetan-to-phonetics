@@ -9,6 +9,8 @@ runTestGroup({
     { tibetan: 'དབུ',   converted:    'u'},
     { tibetan: 'དབུས',  converted:    'ü'},
     { tibetan: 'དབུག',  converted:   'uk'},
+    { tibetan: 'དབུམ',  converted:   'um'},
+    { tibetan: 'དབུན',  converted:   'ün'},
     { tibetan: 'དབུལ',  converted:   'ül'},
     { tibetan: 'དབུར',  converted:   'ur'},
     { tibetan: 'དབུས',  converted:    'ü'},
@@ -18,6 +20,10 @@ runTestGroup({
     { tibetan: 'དབྱི',  converted:   'yi'},
     { tibetan: 'དབྱུ',  converted:   'yu'},
     { tibetan: 'དབྱེ',  converted:   'yé'},
-    { tibetan: 'དབྱོ',  converted:   'yo'}
+    { tibetan: 'དབྱེ',  converted:   'yé'},
+    { tibetan: 'དབྱོ',  converted:   'yo'},
+    { tibetan: 'དབྱོམ',  converted:   'yom'},
+    { tibetan: 'དབྱོན',  converted:   'yön'},
+    { tibetan: 'དབྱོལ',  converted:   'yöl'}
   ]
 })

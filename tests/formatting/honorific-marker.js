@@ -7,7 +7,7 @@ runTestGroup({
     { tibetan: 'མཁྱེ༵ན་བརྩེ༵འི་', converted: 'khyentsé' },
     { tibetan: 'ནུས༵་ལྡན༵་', converted: 'nüden' },
     { tibetan: 'རྡོ༵་རྗེ༵་', converted: 'dorjé' },
-    { tibetan: 'རྒྱལ༵་པོ་',  converted: 'gyelpo' },
+    { tibetan: 'རྒྱལ༵་པོ་',  converted: 'gyalpo' },
   ]
 })
 

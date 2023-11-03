@@ -10,7 +10,7 @@ runTestGroup({
     { tibetan: 'པའོ', converted: "pa'o" },
     { tibetan: 'བེའུ', converted: "bé'u" },
 
-    // Vowels
+    // Vowals
     { tibetan: 'པའི', converted: 'pé' },
 
     // Regular consonants

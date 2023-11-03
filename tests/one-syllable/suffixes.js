@@ -15,8 +15,8 @@ runTestGroup({
     { tibetan: 'རྒྱན', converted: 'gyen' },
 
     // la: ümlauts & pronounced & softens
-    { tibetan: 'པལ', converted: 'pel' },
-    { tibetan: 'རྒྱལ', converted: 'gyel' },
+    { tibetan: 'པལ', converted: 'pal' },
+    { tibetan: 'རྒྱལ', converted: 'gyal' },
     { tibetan: 'རྒྱེལ', converted: 'gyel' },
 
     // ka/pa : pronounced & softens
@@ -42,7 +42,7 @@ runTestGroup({
     { tibetan: 'བཀའ', converted: 'ka' },
     { tibetan: 'བགའ', converted: 'ga' },
 
-    // 'i as dreldra
+    // 'i as draldra
     { tibetan: 'བགའི',  converted: 'gé' },
     { tibetan: 'བགིའི', converted: 'gi' },
     { tibetan: 'བགུའི', converted: 'gü' },

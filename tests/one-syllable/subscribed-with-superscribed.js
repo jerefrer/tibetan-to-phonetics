@@ -20,7 +20,7 @@ runTestGroup({
     { tibetan: 'སྤྱ',  converted: 'cha'},
     { tibetan: 'སྦྱ',  converted:  'ja'},
     { tibetan: 'སྨྱ',  converted: 'nya'},
-    // === A few of them mixed with vowels
+    // === A few of them mixed with vowals
     { tibetan: 'སྐྱོ',  converted: 'kyo'},
     { tibetan: 'སྒྱོ',  converted: 'gyo'},
     { tibetan: 'སྦྱེ',  converted:  'jé'},
@@ -46,7 +46,7 @@ runTestGroup({
     { tibetan: 'སྡྲ',  converted: 'dra'},
     { tibetan: 'སྦྲ',  converted: 'dra'},
     { tibetan: 'སྨྲ',  converted:  'ma'},
-    // === A few of them mixed with vowels
+    // === A few of them mixed with vowals
     { tibetan: 'རྟྲི',  converted: 'tri'},
     { tibetan: 'རྡྲི',  converted: 'dri'},
     { tibetan: 'སྦྲེ',  converted: 'dré'},

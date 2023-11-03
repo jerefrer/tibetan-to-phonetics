@@ -42,7 +42,7 @@ export const baseRules = {
   'drengbuMaNaRa': 'e',    // མཁྱེན་ / drengbu and suffix ma, na, ra
   'drengbuGaBaLaNga': 'e', // འཕྲེང་ / drengbu and suffix ga, ba, la, nga
   'aNa': 'e',              // རྒྱན་  / no vowel and suffix na
-  'aLa': 'e',              // རྒྱལ་  / no vowel and suffix la
+  'aLa': 'a',              // རྒྱལ་  / no vowel and suffix la
   'aKikuI': "a'i",         // པའི
 
   // Regular consonants

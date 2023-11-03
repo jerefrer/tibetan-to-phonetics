@@ -18,19 +18,19 @@ runTestGroup({
     { tibetan: 'ཉོ་བ་', converted: 'nyowa' },
     { tibetan: 'ཉོ་བས་', converted: 'nyowé' },
     { tibetan: 'ཉོ་བའི་', converted: 'nyowé' },
-    { tibetan: 'གདལ་བའོ་', converted: 'delwa-o' },
+    { tibetan: 'གདལ་བའོ་', converted: 'dalwa-o' },
     { tibetan: 'ངོ་བོས་', converted: 'ngowö' },
     { tibetan: 'སྤྱི་བོའི་', converted: 'chiwö' },
     { tibetan: 'འབྲས་བུ', converted: 'drépu' },
     { tibetan: 'འབྲས་བུའི', converted: 'drépü' },
 
     // End of line
-    { tibetan: 'དཔལ་འཕེལ་བ་', converted: "pelp'el wa" },
-    { tibetan: 'དཔལ་འཕེལ་བས་', converted: "pelp'el wé" },
-    { tibetan: 'དཔལ་འཕེལ་བའི་', converted: "pelp'el wé" },
-    { tibetan: 'དཔལ་འཕེལ་བོ་', converted: "pelp'el wo" },
-    { tibetan: 'དཔལ་འཕེལ་བོས་', converted: "pelp'el wö" },
-    { tibetan: 'དཔལ་འཕེལ་བར་', converted: "pelp'el war" },
-    { tibetan: 'དཔལ་འཕེལ་བོད་', converted: "pelp'el pö" },
+    { tibetan: 'དཔལ་འཕེལ་བ་', converted: "palp'el wa" },
+    { tibetan: 'དཔལ་འཕེལ་བས་', converted: "palp'el wé" },
+    { tibetan: 'དཔལ་འཕེལ་བའི་', converted: "palp'el wé" },
+    { tibetan: 'དཔལ་འཕེལ་བོ་', converted: "palp'el wo" },
+    { tibetan: 'དཔལ་འཕེལ་བོས་', converted: "palp'el wö" },
+    { tibetan: 'དཔལ་འཕེལ་བར་', converted: "palp'el war" },
+    { tibetan: 'དཔལ་འཕེལ་བོད་', converted: "palp'el pö" },
   ]
 })

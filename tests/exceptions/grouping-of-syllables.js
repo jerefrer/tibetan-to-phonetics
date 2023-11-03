@@ -26,9 +26,10 @@ runTestGroup({
     'ཚེ་དཔག་མེད': 'ཚེ་པ་མེད',
   },
   tests: [
-    { tibetan: 'འོད་མཐའ་ཡས་', converted: 'öntha yé' },
-    { tibetan: 'སྤྱན་རས་གཟིགས་', converted: 'chenré zi' },
+    { tibetan: 'འོད་མཐའ་ཡས་', converted: 'önthayé' },
+    { tibetan: 'སྤྱན་རས་གཟིགས་', converted: 'chenrézi' },
     { tibetan: 'ཨཱཿཞེས་ལོངས་སྐུ་འགྲོ་འདུལ་སྤྱན་རས་གཟིགས།', converted: 'ah zhé longku drodül chenré zi' },
-    { tibetan: 'སྤྱན་རས་གཟིགས་དབང་མགོན་པོ་བྱམས་པའི་དཔལ། །', converted: 'chenré ziwang gönpo champé pel' },
+    { tibetan: 'སྤྱན་རས་གཟིགས་དབང་མགོན་པོ་བྱམས་པའི་དཔལ། །', converted: 'chenrézi wang gönpo champé pal' },
+    { tibetan: 'སྤྱན་རས་གཟིགས་དབང་བསྟ༵ན་འཛི༵ན་རྒྱ༵་མཚོ༵་ཡི། །', converted: 'chenrézi wang tendzin gyamtso yi' },
   ]
 })

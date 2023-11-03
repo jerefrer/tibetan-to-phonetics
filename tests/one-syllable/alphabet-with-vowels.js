@@ -1,7 +1,7 @@
 var { runTestGroup } = require('../helpers.js');
 
 runTestGroup({
-  name: 'Alphabet with vowels',
+  name: 'Alphabet with vowals',
   tests: [
     { tibetan: 'ཀ',  converted: 'ka'},
     { tibetan: 'ཀི', converted: 'ki'},

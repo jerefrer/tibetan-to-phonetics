@@ -3,7 +3,7 @@ var { runTestGroup } = require('../helpers.js');
 runTestGroup({
   name: 'Formatting - Connect with dash for readability',
   tests: [
-    // Dash if first ends and second starts with vowel
+    // Dash if first ends and second starts with vowal
     { tibetan: 'བའི་འོས', converted: 'pé-ö' },
     { tibetan: 'ས་འམ་', converted: 'sa-am' },
     // Or a followed by n

@@ -6,9 +6,9 @@ runTestGroup({
     'doubleS': true
   },
   tests: [
-    // Double S if ends with vowel and starts with s (but not 'sh')
+    // Double S if ends with vowal and starts with s (but not 'sh')
     { tibetan: 'སོ་སོར་', converted: 'sossor' },
-    { tibetan: 'འོད་གསལ་', converted: 'össel' },
+    { tibetan: 'འོད་གསལ་', converted: 'össal' },
     { tibetan: 'རྩ་གསུམ་', converted: 'tsassum' },
     { tibetan: 'དུས་གསུམ་', converted: 'tüssum' },
     { tibetan: 'ཆོས་སྲིད་', converted: 'chössi' },
@@ -18,7 +18,7 @@ runTestGroup({
     // No double S if ends with n and starts with s
     { tibetan: 'ཕུན་སུམ་', converted: "p'ünsum" },
     // No double S if ends with l and starts with s
-    { tibetan: 'ཞལ་ཟས་', converted: 'zhelsé' },
+    { tibetan: 'ཞལ་ཟས་', converted: 'zhalsé' },
     // No double S if ends with r and starts with s
     { tibetan: 'པར་གསུངས་', converted: 'parsung' },
     // No double S if ends with m and starts with s
@@ -40,9 +40,9 @@ runTestGroup({
     'doubleS': false
   },
   tests: [
-    // No double S if ends with vowel and starts with s (but not 'sh')
+    // No double S if ends with vowal and starts with s (but not 'sh')
     { tibetan: 'སོ་སོར་', converted: 'sosor' },
-    { tibetan: 'འོད་གསལ་', converted: 'ösel' },
+    { tibetan: 'འོད་གསལ་', converted: 'ösal' },
     { tibetan: 'རྩ་གསུམ་', converted: 'tsasum' },
     { tibetan: 'དུས་གསུམ་', converted: 'tüsum' },
     { tibetan: 'ཆོས་སྲིད་', converted: 'chösi' },

@@ -6,7 +6,7 @@ runTestGroup({
   includeInPercentage: true,
   tests: [
 
-    // Vowels
+    // Vowals
     { tibetan: 'འུ', converted: 'ou' },
     { tibetan: 'འུས', converted: 'u' },
     { tibetan: 'འོས', converted: 'eu' },

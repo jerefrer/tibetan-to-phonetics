@@ -6,9 +6,9 @@ runTestGroup({
   includeInPercentage: true,
   sentences: true,
   tests: [
-    { tibetan: 'ཨེ་མ་ཧོཿ སྤྲོས་བྲལ་ཆོས་ཀྱི་དབྱིངས་ཀྱི་ཞིང་ཁམས་སུ༔ ', converted: "émaho treutrel tch'eukyi yingkyi shingkham sou" },
+    { tibetan: 'ཨེ་མ་ཧོཿ སྤྲོས་བྲལ་ཆོས་ཀྱི་དབྱིངས་ཀྱི་ཞིང་ཁམས་སུ༔ ', converted: "émaho treutral tch'eukyi yingkyi shingkham sou" },
     { tibetan: 'ཆོས་ཉིད་དུས་གསུམ་སྐྱེ་འགགས་མེད་པའི་ངང་༔ ', converted: "tch'eunyi tussoum kyégak mépé ngang" },
-    { tibetan: 'བྱ་བྲལ་ལྷུན་རྫོགས་བདེ་བ་ཆེན་པོའི་སྐུ༔ ', converted: "tch'atrel lhundzok déwa tch'enpeu kou" },
+    { tibetan: 'བྱ་བྲལ་ལྷུན་རྫོགས་བདེ་བ་ཆེན་པོའི་སྐུ༔ ', converted: "tch'atral lhundzok déwa tch'enpeu kou" },
     { tibetan: 'ནམ་མཁའ་བཞིན་དུ་ཐུགས་རྗེ་ཕྱོགས་རིས་མེད༔ ', converted: "namkha shintou t'oukdjé tch'okri mé" },
     { tibetan: 'བླ་མ་ཆོས་ཀྱི་སྐུ་ལ་གསོལ་བ་འདེབས༔ ', converted: "lama tch'eukyi koula seulwa dep" },
     { tibetan: 'ཨོ་རྒྱན་པདྨ་འབྱུང་གནས་ལ་གསོལ་བ་འདེབས༔ ', converted: "orguien padma djoung-né la seulwa dep" },
