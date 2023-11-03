@@ -23,7 +23,8 @@
     "build": "npm run clean && npm run build:esm && npm run build:umd",
     "build:esm": "rollup src/tibetan-to-phonetics.js --format esm --file dist/tibetan-to-phonetics.esm.js",
     "build:umd": "rollup src/tibetan-to-phonetics.js --format umd --name TibetanToPhonetics --file dist/tibetan-to-phonetics.umd.js",
-    "test": "jest --colors"
+    "test": "jest --colors",
+    "test:watch": "jest --colors --watch"
   },
   "keywords": [],
   "author": "",
