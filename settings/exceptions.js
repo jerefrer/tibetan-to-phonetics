@@ -216,4 +216,11 @@ export const defaultGeneralExceptions = {
   'རསྟུ': 'ར_sཏུ',
   'བཻ་ཌཱུརྻ': 'ben_du_rya',
   'སེངྒེ': 'སེང་སྒེ',
+  'བྷནྡྷ': 'bhan_dha',
+  'ས་དྷཱུ་': 'sa_dhཨུ',
+  'རཀ': 'rak',
+  'བྷ་ལིཾ་ཏ': 'ba_ling_ta',
+  'དེ་བཱི': 'dé_vi',
+  'ཤྭ་ན': 'ཤོ་ན',
+  'ནཱ་གརྫུ་ན': 'na_gar_ju_na',
 }
