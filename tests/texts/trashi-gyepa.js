@@ -20,7 +20,7 @@ runTestGroup({
     { tibetan: 'བདེ་བར་གཤེགས་པ་བརྒྱད་ལ་ཕྱག་འཚལ་ལོ། །', converted: "déwar shekpa gyéla chaktsal lo" },
     { tibetan: 'འཇམ་དཔལ་གཞོན་ནུ་དཔལ་ལྡན་རྡོ་རྗེ་འཛིན། །', converted: "jampal zhön-nu palden dorjé dzin" },
     { tibetan: 'སྤྱན་རས་གཟིགས་དབང་མགོན་པོ་བྱམས་པའི་དཔལ། །', converted: "chenré ziwang gönpo champé pal", pending: true },
-    { tibetan: 'ས་ཡི་སྙིང་པོ་སྒྲིབ་པ་རྣམ་པར་སེལ། །', converted: "sayi nyingpo drip-pa nampar sal" },
+    { tibetan: 'ས་ཡི་སྙིང་པོ་སྒྲིབ་པ་རྣམ་པར་སེལ། །', converted: "sayi nyingpo drip-pa nampar sel" },
     { tibetan: 'ནམ་མཁའི་སྙིང་པོ་འཕགས་མཆོག་ཀུན་ཏུ་བཟང་། །', converted: "namkhé nyingpo p'akchok küntu zang" },
     { tibetan: 'ཨུཏྤལ་རྡོ་རྗེ་པད་དཀར་ཀླུ་ཤིང་དང་། །', converted: "utpal dorjé pékar lushing tang" },
     { tibetan: 'ནོར་བུ་ཟླ་བ་རལ་གྲི་ཉི་མ་ཡི། །', converted: "norpu dawa raltri nyima yi" },
