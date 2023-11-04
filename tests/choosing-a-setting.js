@@ -1,4 +1,4 @@
-var { TibetanToPhonetics, Settings } = require('../dist/tibetan-to-phonetics.umd.js');
+import { TibetanToPhonetics, Settings } from '../lib/esm/tibetan-to-phonetics/tibetan-to-phonetics';
 
 describe('Choosing a setting at instantiation', function() {
 

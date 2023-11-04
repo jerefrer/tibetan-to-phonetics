@@ -1,6 +1,6 @@
 import _ from 'underscore';
 
-import { defaultGeneralExceptions } from '../settings/exceptions.js';
+import { defaultGeneralExceptions } from './settings/exceptions.js';
 import { removeMuteCharsAndNormalize } from './utils';
 
 var t;

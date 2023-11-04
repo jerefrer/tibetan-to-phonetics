@@ -1,4 +1,4 @@
-var { runTestGroup } = require('../helpers.js');
+import { runTestGroup } from '../helpers.js';
 
 runTestGroup({
   name: 'Exceptions - Grouping of syllables - 1 syllable',

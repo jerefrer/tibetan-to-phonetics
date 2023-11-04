@@ -1,4 +1,4 @@
-var { runTestGroup } = require('../helpers.js');
+import { runTestGroup } from '../helpers.js';
 
 runTestGroup({
   name: 'Formatting - Honorific markers (anusvara) are ignored - In regular text',

@@ -1,26 +1,7 @@
 {
   "name": "tibetan-to-phonetics",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "A naive attempt at automatically generating reliable Tibetan phonetics based on customizable sets of rules.",
-  "main": "dist/tibetan-to-phonetics.umd.js",
-  "module": "dist/tibetan-to-phonetics.esm.js",
-  "devDependencies": {
-    "jest": "^29.7.0",
-    "rollup": "^4.2.0"
-  },
-  "dependencies": {
-    "tibetan-normalizer": "^0.1.0",
-    "tibetan-syllable-parser": "^1.0.3",
-    "underscore": "^1.13.6"
-  },
-  "scripts": {
-    "clean": "rm -rf ./dist && mkdir dist",
-    "build": "npm run clean && npm run build:esm && npm run build:umd",
-    "build:esm": "rollup src/tibetan-to-phonetics.js --format esm --file dist/tibetan-to-phonetics.esm.js",
-    "build:umd": "rollup src/tibetan-to-phonetics.js --format umd --name TibetanToPhonetics --file dist/tibetan-to-phonetics.umd.js",
-    "test": "jest --colors",
-    "test:watch": "jest --colors --watch"
-  },
   "keywords": [
     "tibetan",
     "unicode",
@@ -29,5 +10,51 @@
     "linguistics",
     "transliteration"
   ],
-  "license": "MIT"
+  "author": "Jérémy FRERE",
+  "license": "MIT",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "files": [
+    "src",
+    "lib"
+  ],
+  "exports": {
+    "require": "./lib/cjs/index.js",
+    "import": "./lib/esm/index.js"
+  },
+  "scripts": {
+    "clean": "rimraf lib",
+    "build:esm": "cross-env BABEL_ENV=esmUnbundled babel src --out-dir 'lib/esm' --source-maps",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel src --out-dir 'lib/cjs' --source-maps",
+    "build:bundles": "cross-env BABEL_ENV=esmBundled rollup -c",
+    "build": "npm-run-all -l clean -p build:esm build:cjs build:bundles",
+    "test": "jest"
+  },
+  "homepage": "https://github.com/jerefrer/tibetan-syllable-parser#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jerefrer/tibetan-syllable-parser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jerefrer/tibetan-syllable-parser/issues"
+  },
+  "dependencies": {
+    "tibetan-normalizer": "^0.1.0",
+    "tibetan-syllable-parser": "^1.0.5",
+    "underscore": "^1.13.6"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.0.3",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.3.0"
+  }
 }
