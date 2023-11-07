@@ -32,6 +32,8 @@ runTestGroup({
     { tibetan: 'སྭ་སྟི།' , converted: 'svasti' },
     { tibetan: 'ༀ་སྭ་སྟི།' , converted: 'om svasti' },
 
+    { tibetan: 'ཤཱཀྱ་', converted: 'shakya' },
+    { tibetan: 'ཤཱཀྱའི་', converted: 'shakyé' },
     { tibetan: 'པདྨ་', converted: 'padma' },
     { tibetan: 'པདྨ་གེ་སར་', converted: 'padma késar' },
     { tibetan: 'དིཔྟ་ཙཀྲ་', converted: 'dipta tsaktra' },

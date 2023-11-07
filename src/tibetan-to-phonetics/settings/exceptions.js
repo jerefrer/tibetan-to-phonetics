@@ -95,6 +95,7 @@ export const defaultGeneralExceptions = {
   'བཛྲ': 'va_jra',
   'ཏནྟྲ': 'tan_tra',
   'སིདྡྷི': 'sid_dhi',
+  'ཤཱཀྱ': 'sha_kya',
   'ཛྙཱ': 'རྒྱ',
   'པདྨ': 'པd_མ',
   'པདྨོ': 'པd_མོ',
