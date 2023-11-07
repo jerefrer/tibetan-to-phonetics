@@ -1,6 +1,6 @@
 {
   "name": "tibetan-to-phonetics",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "A naive attempt at automatically generating reliable Tibetan phonetics based on customizable sets of rules.",
   "keywords": [
     "tibetan",
