@@ -56,6 +56,11 @@
   * How to pronounce དབའ?
     * Wa?
     * Ba?
+*
+  ད་ལྟ་
+  * Tata  ?
+  * Tanta ?
+  * Tanda ?
 * དྭངས
   * Tang?
   * Dang?
@@ -120,6 +125,8 @@
   * Should it be 'Nampar minpa-ang sami khyap'?
     * which is the case currently and is how it's done in the Prayer Book 1
   * Or 'Nampar minpa angsam mi khyap'?
+* ད་ནི་ཀུན་ཤེས་གཅིག་སྡུག་ལམ་བོར་ནས། །
+  Yields "lamwor né" but should be "lampor né". How to catch that ?
 
 ## Differences between Kham and Lhasa dialects
 * suffix ལ་
