@@ -31,10 +31,10 @@ export const englishSuperLoose = {
     'aKikuI': "e",           // པའི
 
     // Regular consonants
-    'ka':  'g',               // ཀ
-    'kha': 'g',               // ཁ
+    'ka':  'k',               // ཀ
+    'kha': 'k',               // ཁ
     'tha': 't',               // ཐ
-    'ga': 'g',               // ག
+    'ga': 'k',               // ག
     'ba': 'p',               // བ
     'cha': 'ch',             // ཆ
     'tsha': 'ts',            // ཚ
@@ -44,7 +44,7 @@ export const englishSuperLoose = {
     'dza': 'ts',             // ཛ
 
     // Modified consonants (with prefix or superscribed)
-    'gaMod': 'g',            // རྒ
+    'gaMod': 'k',            // རྒ
     'jaMod': 'ch',           // རྗ
     'daMod': 't',            // རྡ
     'baMod': 'p',            // རྦ
@@ -58,10 +58,10 @@ export const englishSuperLoose = {
     'hra': 'hr',             // ཧྲ
 
     // Yatas
-    'kaYata': 'g',           // ཀྱ
-    'khaYata': 'g',          // ཁྱ
-    'gaYata': 'g',           // གྱ
-    'gaModYata': 'g',        // སྒྱ / ga with yata and prefix/superscribed
+    'kaYata': 'k',           // ཀྱ
+    'khaYata': 'k',          // ཁྱ
+    'gaYata': 'k',           // གྱ
+    'gaModYata': 'k',        // སྒྱ / ga with yata and prefix/superscribed
     'paYata': 'ch',          // པྱ
     'phaYata': 'ch',         // ཕྱ
     'baYata': 'ch',          // བྱ

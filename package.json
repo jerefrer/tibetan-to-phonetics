@@ -1,6 +1,6 @@
 {
   "name": "tibetan-to-phonetics",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "A naive attempt at automatically generating reliable Tibetan phonetics based on customizable sets of rules.",
   "keywords": [
     "tibetan",
@@ -10,7 +10,7 @@
     "linguistics",
     "transliteration"
   ],
-  "author": "Jérémy FRERE",
+  "author": "Jeremy FRERE",
   "license": "MIT",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
