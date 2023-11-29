@@ -83,6 +83,9 @@
   * Okma?
   * Oma?
   * O-ma?
+* དབུགས་དབྱུང་
+  * Uyung?
+  * Ukyung?
 
 ## Questions about style
 * ཆ་ : cha? ch'a?
