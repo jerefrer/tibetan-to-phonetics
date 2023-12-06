@@ -8,15 +8,15 @@ runTestGroup({
 
     // End link char (as in pa-o or be-u)
     { tibetan: 'པའོ', converted: "pa'o" },
-    { tibetan: 'བེའུ', converted: "bé'u" },
+    { tibetan: 'བེའུ', converted: "pé'u" },
 
     // Vowals
     { tibetan: 'པའི', converted: 'pé' },
 
     // Regular consonants
-    { tibetan: 'ག', converted: "ga" },
-    { tibetan: 'ཇ', converted: "ja" },
-    { tibetan: 'ད', converted: "da" },
+    { tibetan: 'ག', converted: "ka" },
+    { tibetan: 'ཇ', converted: "cha" },
+    { tibetan: 'ད', converted: "ta" },
     { tibetan: 'ཕ', converted: "pa" },
     { tibetan: 'ཚ', converted: "tsa" },
     { tibetan: 'ཞ', converted: "sha" },
@@ -26,9 +26,11 @@ runTestGroup({
     { tibetan: 'ཁྲོལ', converted: "tröl" },
     { tibetan: 'ཕྲོལ', converted: "tröl" },
     // 3rd column with rata
-    { tibetan: 'གྲོལ', converted: "dröl" },
-    { tibetan: 'བྲོལ', converted: "dröl" },
-    { tibetan: 'དྲོལ', converted: "dröl" },
+    { tibetan: 'གྲོལ', converted: "tröl" },
+    { tibetan: 'བྲོལ', converted: "tröl" },
+    { tibetan: 'དྲོལ', converted: "tröl" },
+    // 3rd column with modified rata
+    { tibetan: 'སྒྲོལ་', converted: "dröl" },
 
     // Yatas
     { tibetan: 'གྱ', converted: "gya" },

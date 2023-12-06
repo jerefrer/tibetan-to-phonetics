@@ -9,7 +9,7 @@ const runTestGroup = function(testGroup) {
         var setting =
           testGroup.setting
           ? Settings.findOriginal(testGroup.setting)
-          : Settings.originalDefault();
+          : Settings.findOriginal('english-semi-strict')
         setting = JSON.parse(JSON.stringify(setting));
         if (testGroup.rules)
           _(setting.rules).extend(testGroup.rules);

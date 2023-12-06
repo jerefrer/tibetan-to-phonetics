@@ -10,8 +10,8 @@ describe('Choosing a setting at instantiation', function() {
 
   it('works when passing as setting a string that matches the id of an existing Setting', function() {
     var converter = new TibetanToPhonetics({ setting: 'english-loose' });
-    var result = converter.convert('གང་གི་བློ་གྲོས་');
-    expect(result).toEqual('gang-gi lodrö');
+    var result = converter.convert('དབྱིངས་ཀྱི་ཞིང་ཁམས་སུ');
+    expect(result).toEqual('yingkyi shingkam su');
   })
 
   it('raises an error when passing as setting a string that does not match any Setting id', function() {

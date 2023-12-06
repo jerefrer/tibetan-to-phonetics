@@ -36,8 +36,8 @@ phonetics.convert('ཨེ་མ་ཧོཿ སྤྲོས་བྲལ་ཆོ
 ```
 Use different settings, either by passing the name of an existing setting:
 ```js
-new TibetanToPhonetics({ setting: 'english-loose' }).convert('གང་གི་བློ་གྲོས་');
-// => 'gangi lodrö'
+new TibetanToPhonetics({ setting: 'english-loose' }).convert('དབྱིངས་ཀྱི་ཞིང་ཁམས་སུ');
+// => 'yingkyi shingkam su'
 
 ```
 Or the setting itself:

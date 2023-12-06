@@ -4,7 +4,7 @@ import { baseRules } from './settings/base.js';
 import { defaultSettings as rawDefaultSettings } from './settings/all.js';
 import { deepClone } from './utils.js';
 
-const defaultSettingId = 'english-semi-strict';
+const defaultSettingId = 'english-loose';
 
 const defaultsMissingRulesToBaseRules = function(setting) {
   setting.isDefault = true;

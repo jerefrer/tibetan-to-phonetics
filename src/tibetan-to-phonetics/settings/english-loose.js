@@ -36,19 +36,18 @@ export const englishLoose = {
     'aKikuI': 'é',              // པའི
 
     // Regular consonants
-    'ga': 'g',                  // ག
+    'kha': 'k',                 // ཁ
+    'ga': 'k',                  // ག
     'cha': 'ch',                // ཆ
+    'th': 't',                  // བ
     'ba': 'p',                  // བ
     'tsha': 'ts',               // ཚ
-    'ja': 'j',                  // ཇ
-    'da': 'd',                  // ད
+    'ja': 'ch',                 // ཇ
     'pha': 'p',                 // ཕ
-    'ba': 'b',                  // བ
     'zha': 'sh',                // ཞ
 
     // Ratas
     'rata2': 'tr',              // ཁྲ  // 2nd column with rata
-    'rata3': 'dr',              // བྲ  // 3rd column with rata
 
     // Yatas
     'gaYata': 'gy',             // གྱ
