@@ -50,7 +50,7 @@ export const englishLoose = {
     'rata2': 'tr',              // ཁྲ  // 2nd column with rata
 
     // Yatas
-    'gaYata': 'gy',             // གྱ
+    'gaYata': 'ky',             // གྱ
     'phaYata': 'ch',            // ཕྱ
     'baYata': 'ch',             // བྱ
 

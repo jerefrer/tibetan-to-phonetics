@@ -33,7 +33,7 @@ runTestGroup({
     { tibetan: 'སྒྲོལ་', converted: "dröl" },
 
     // Yatas
-    { tibetan: 'གྱ', converted: "gya" },
+    { tibetan: 'གྱ', converted: "kya" },
     { tibetan: 'ཕྱ', converted: "cha" },
     { tibetan: 'བྱ', converted: "cha" },
 
