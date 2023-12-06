@@ -3,7 +3,7 @@
 A naive attempt at automatically converting Tibetan Unicode texts into
 reliable phonetics based on customizable sets of rules.
 
-Works almost perfectly for prayers which syllables are chanted two by two.
+Works almost perfectly for prayers in which the syllables are chanted two by two.
 
 Usage
 -----------
