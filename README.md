@@ -151,31 +151,6 @@ exceptions in the `exceptions` attribute of any setting. If the left-hand side
 value is the same as one of the general exceptions, it will take precedence
 over the general exception.
 
-Fonts
------------
-
-The app is designed to use these fonts in order of preference:
-```
-* TibetanChogyalUnicode-170221 if it is installed on the user system
-* TibetanChogyalUnicode-ID     if it is installed on the user system
-* TibetanChogyalUnicode        if it is installed on the user system
-* TibetanMachineUnicode        if none of the previous ones are installed. It is included in the app.
-```
-
-Since I believe `TibetanChogyalUnicode` is copyrighted but `TibetanMachineUnicode` is free to use, this should ensure that people with `TibetanChogyalUnicode` already installed on their machine will be able to benefit from it, and those who don’t will still have a good enough font displayed even if none are installed on their system.
-You could update all the .css files in stylesheets/ with the latest version of `TibetanChogyalUnicode` if necessary, either by replacing `TibetanChogyalUnicode-170221` by the latest one:
-```
-font-family: TibetanChogyalUnicode-210803, TibetanChogyalUnicode-ID, TibetanChogyalUnicode, TibetanMachineUnicode !important;
-```
-instead of:
-```
-font-family: TibetanChogyalUnicode-170221, TibetanChogyalUnicode-ID, TibetanChogyalUnicode, TibetanMachineUnicode !important;
-```
-or by adding the latest one before `TibetanChogyalUnicode-170221` with a comma in between:
-```
-font-family: TibetanChogyalUnicode-210803, TibetanChogyalUnicode-170221, TibetanChogyalUnicode-ID, TibetanChogyalUnicode, TibetanMachineUnicode !important;
-```
-
 Development
 -----------
 
