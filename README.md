@@ -5,8 +5,7 @@ reliable phonetics based on customizable sets of rules.
 
 Works almost perfectly for prayers in which the syllables are chanted two by two.
 
-Usage
------------
+## Usage
 
 ```js
 import { TibetanToPhonetics } from 'tibetan-to-phonetics';
@@ -17,8 +16,10 @@ phonetics.convert('གང་གི་བློ་གྲོས་');
 phonetics.convert('སྒྲིབ་གཉིས་སྤྲིན་བྲལ་');
 // => 'dripnyi trintrel'
 ```
+
 Use the `capitalize` option to capitalize the first letter of every group,
 either passing it to the constructor:
+
 ```js
 var phonetics = new TibetanToPhonetics({ capitalize: true });
 phonetics.convert('ཨེ་མ་ཧོཿ སྤྲོས་བྲལ་ཆོས་ཀྱི་དབྱིངས་ཀྱི་ཞིང་ཁམས་སུ༔ ');
@@ -26,7 +27,9 @@ phonetics.convert('ཨེ་མ་ཧོཿ སྤྲོས་བྲལ་ཆོ
 phonetics.convert('གང་གི་བློ་གྲོས་');
 // => 'Kangki lotrö'
 ```
+
 Or on a per-call basis:
+
 ```js
 var phonetics = new TibetanToPhonetics();
 phonetics.convert('ཨེ་མ་ཧོཿ སྤྲོས་བྲལ་ཆོས་ཀྱི་དབྱིངས་ཀྱི་ཞིང་ཁམས་སུ༔ ', { capitalize: true });
@@ -34,13 +37,16 @@ phonetics.convert('ཨེ་མ་ཧོཿ སྤྲོས་བྲལ་ཆོ
 phonetics.convert('ཨེ་མ་ཧོཿ སྤྲོས་བྲལ་ཆོས་ཀྱི་དབྱིངས་ཀྱི་ཞིང་ཁམས་སུ༔ ');
 // => 'émaho trötrel chökyi yingkyi zhingkham su'
 ```
+
 Use different settings, either by passing the name of an existing setting:
+
 ```js
 new TibetanToPhonetics({ setting: 'english-loose' }).convert('དབྱིངས་ཀྱི་ཞིང་ཁམས་སུ');
 // => 'yingkyi shingkam su'
-
 ```
+
 Or the setting itself:
+
 ```js
 import { TibetanToPhonetics, Settings } from 'tibetan-to-phonetics';
 
@@ -48,23 +54,23 @@ var frenchRuletset = Settings.find('french');
 new TibetanToPhonetics({ setting: frenchRuletset }).convert('གང་གི་བློ་གྲོས་');
 // => 'kangki lotreu'
 ```
+
 Or any object that quacks like a setting, meaning it returns objects for `rules` and `exceptions`:
+
 ```js
-var dummyRuleSet = {
-  rules: { 'ö': 'eu' },
-  exceptions: {}
-};
+var dummyRuleSet = { rules: { ö: 'eu' }, exceptions: {} };
 new TibetanToPhonetics({ setting: dummyRuleSet }).convert('གང་གི་བློ་གྲོས་');
 // => 'kangki lotreu'
 ```
 
 Lists of the rules and exceptions that have been used by an instance of phonetics
 since its creation are available as `rulesUsed` and `exceptionsUsed`.
+
 ```js
 var phonetics = new TibetanToPhonetics(); // using default 'english-strict'
 phonetics.convert('གང་གི་བློ་གྲོས་');
 // => 'kangki lotrö'
-phonetics.rulesUsed
+phonetics.rulesUsed;
 // => {
 //   "ga": "k",
 //   "a": "a",
@@ -76,15 +82,16 @@ phonetics.rulesUsed
 //   "ö": "ö"
 // }}
 ```
+
 They can be reset by calling `resetRulesUsed()` and `resetExceptionsUsed()`.
+
 ```js
 phonetics.resetRulesUsed();
-phonetics.rulesUsed
+phonetics.rulesUsed;
 // => {}
 ```
 
-Settings
------------
+## Settings
 
 ### Editing and creating default settings
 
@@ -97,15 +104,18 @@ code used by the app, the right-hand side what you want it to be substituted
 with in the generated conversion.
 
 For instance the rule for "kha" (2nd column "ka") in `base.js` is:
+
 ```js
 'kha': 'kh',
 ```
 
 If you wish to display "kha" as "ka", you would have this line in any of the
 other setting files:
+
 ```js
 'kha': 'k',
 ```
+
 Which will take precedence over the default value (that will be ignored).
 
 Every single line in `base.js` can thus be copy-pasted in another set file
@@ -113,29 +123,15 @@ to be overridden. You can edit existing rule sets or create new ones.
 
 To add a new rule set just copy an existing one and replace the `id` and
 `name`, making sure your new `id` has not already been taken.
+
 ```html
-# settings/my-new-setting.js
-
-defaultSettings.push({
-
-  id: 'my-new-setting',
-  name: 'My new setting',
-
-  rules: {
-    ...
-  },
-
-  exceptions: {
-    ...
-  }
-
-})
+# settings/my-new-setting.js defaultSettings.push({ id: 'my-new-setting', name: 'My new setting', rules: { ... },
+exceptions: { ... } })
 ```
 
-Also don't forget to add the require lines to the  `settings/all.js`.
+Also don't forget to add the require lines to the `settings/all.js`.
 
-Exceptions
------------
+## Exceptions
 
 Default exceptions apply to all settings. Basically the left-hand
 side value will be substituted by the right-hand side value, and every Tibetan
@@ -151,22 +147,17 @@ exceptions in the `exceptions` attribute of any setting. If the left-hand side
 value is the same as one of the general exceptions, it will take precedence
 over the general exception.
 
-Development
------------
-
 `npm run serve`.
 
 Also you will have an extra option on the `/settings/exceptions` page allowing
 you to ignore browser stored values for the general exceptions, therefore making
 it easier to test the ones you are adding to the `settings/exceptions.js` file.
 
-Testing
------------
+## Testing
 
 `npm run test`.
 
-Contributing
-------------
+## Contributing
 
 You are most welcome to pitch in and improve anything that doesn't feel right,
 define new default settings or add more edge cases.
@@ -178,24 +169,23 @@ continue to yield the expected results.
 And if you do tweak the code, please add enough tests so that others after you
 can rely on them too!
 
-Credits
------------
+## Credits
 
 The rules used to deconstruct the syllables into parts (root, prefix, ...)
-are almost entirely based on John Rockwell's *A Primer for Classical Literary
-Tibetan, Volume 1*.
+are almost entirely based on John Rockwell's _A Primer for Classical Literary
+Tibetan, Volume 1_.
 
 Much thanks to everyone involved in the publication of
 this great book.
 
 A zillion thanks also to:
 
-* Joe B. Wilson and everybody involved in publishing *Translating Tibetan from
-  Buddhism* which is equally great and provided some more clarifications.
-* Tony Duff and friends for producing all these beautiful Tibetan fonts,
+- Joe B. Wilson and everybody involved in publishing _Translating Tibetan from
+  Buddhism_ which is equally great and provided some more clarifications.
+- Tony Duff and friends for producing all these beautiful Tibetan fonts,
   software and fine translations.
-* Everybody involved in building and maintaining Vue.js, SemanticUI, FontAwesome,
-  SublimeText, jQuery, Sugar.js, Underscore.js, DevDocs, Zeal, Google Chrome
+- Everybody involved in building and maintaining Vue.js, SemanticUI, FontAwesome,
+  SublimeText, jQuery, Sugar.js, DevDocs, Zeal, Google Chrome
   and Mozilla Firefox for making web development so easy and enjoyable, even in
   an offline environment.
 

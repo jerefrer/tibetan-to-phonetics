@@ -1,6 +1,6 @@
 {
   "name": "tibetan-to-phonetics",
-  "version": "0.8.5",
+  "version": "0.9.0",
   "description": "A naive attempt at automatically generating reliable Tibetan phonetics based on customizable sets of rules.",
   "keywords": [
     "tibetan",
@@ -40,8 +40,7 @@
   },
   "dependencies": {
     "tibetan-normalizer": "^0.1.0",
-    "tibetan-syllable-parser": "^1.0.5",
-    "underscore": "^1.13.6"
+    "tibetan-syllable-parser": "^1.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.0",

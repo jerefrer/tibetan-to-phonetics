@@ -1,4 +1,4 @@
-import _ from 'underscore';
+
 
 import { baseRules } from './settings/base.js';
 import { defaultSettings as rawDefaultSettings } from './settings/all.js';
@@ -8,7 +8,7 @@ const defaultSettingId = 'english-loose';
 
 const defaultsMissingRulesToBaseRules = function(setting) {
   setting.isDefault = true;
-  _(setting.rules).defaults(baseRules);
+  setting.rules = Object.assign({}, baseRules, setting.rules);
   return setting;
 }
 
@@ -31,10 +31,10 @@ export const Settings = {
   find: function(settingId, options = {}) {
     if (!settingId) return;
     if (settingId.toString().match(/^\d*$/)) settingId = parseInt(settingId);
-    return _(this.settings).findWhere({ id: settingId });
+    return this.settings.find(s => s.id === settingId);
   },
   findOriginal: function(settingId, options = {}) {
-    var setting = _(defaultSettings).findWhere({ id: settingId });
+    var setting = defaultSettings.find(s => s.id === settingId);
     return defaultsMissingRulesToBaseRules(setting);
   },
   update(settingId, name, rules, exceptions) {
@@ -51,7 +51,7 @@ export const Settings = {
       isCustom: true,
       isEditable: true,
       name: name || 'Rule set ' + id,
-      rules: _(fromSetting && deepClone(fromSetting.rules) || {}).defaults(baseRules),
+      rules: Object.assign({}, baseRules, (fromSetting && deepClone(fromSetting.rules)) || {}),
       exceptions: fromSetting && deepClone(fromSetting.exceptions) || {}
     })
     this.updateStore();
@@ -63,7 +63,7 @@ export const Settings = {
     this.create(setting, setting.name);
   },
   delete(setting) {
-    this.settings = _(this.settings).without(setting);
+    this.settings = this.settings.filter(s => s !== setting);
     this.updateStore();
     Storage.get('selectedSettingId', undefined, (value) => {
       if (value == setting.id)
@@ -80,9 +80,8 @@ export const Settings = {
   maxId () {
     return (
       this.settings
-        .filter((setting) => _(setting.id).isNumber())
-        .max('id') ||
-      { id: 0 }
+        .filter((setting) => typeof setting.id === 'number' && !isNaN(setting.id))
+        .reduce((max, s) => s.id > max.id ? s : max, { id: 0 })
     ).id;
   },
   updateStore(callback) {
@@ -91,8 +90,8 @@ export const Settings = {
     });
   },
   numberOfSpecificRules (setting) {
-    return _(setting.rules)
-      .filter((value, key) => baseRules[key] != value)
+    return Object.keys(setting.rules)
+      .filter(key => baseRules[key] != setting.rules[key])
       .length;
   }
 }

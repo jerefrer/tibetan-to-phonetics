@@ -1,17 +1,16 @@
-import _ from 'underscore';
 
-import { defaultGeneralExceptions } from './settings/exceptions.js';
+
 import { removeMuteCharsAndNormalize } from './utils';
 
 var t;
 
 const normalize = function (exceptions) {
-  return _(exceptions).inject((hash, value, key) => {
+  return Object.keys(exceptions).reduce((hash, key) => {
     if (key.trim().length) {
       var normalizedKey = removeMuteCharsAndNormalize(key);
-      var normalizedValue = removeMuteCharsAndNormalize(value);
+      var normalizedValue = removeMuteCharsAndNormalize(exceptions[key]);
       if (normalizedKey != normalizedValue)
-        hash[normalizedKey] = value;
+        hash[normalizedKey] = exceptions[key];
     }
     return hash;
   }, {});

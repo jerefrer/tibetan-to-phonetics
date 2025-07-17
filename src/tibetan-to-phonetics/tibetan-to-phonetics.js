@@ -1,4 +1,4 @@
-import _ from 'underscore';
+
 
 import { Settings } from './settings.js';
 import { baseRules } from './settings/base.js';
@@ -54,15 +54,16 @@ export const TibetanToPhonetics = function(options = {}) {
       }).join(' ');
     },
     splitBySpacesOrNumbers (text) {
-      return _(text.split(/(\d+)| /)).compact();
+      return text.split(/(\d+)| /).filter(Boolean);
     },
     substituteNumbers (text) {
-      _({
-        '༠': '0', '༡': '1', '༢': '2', '༣': '3', '༤': '4',
-        '༥': '5', '༦': '6', '༧': '7', '༨': '8', '༩': '9'
-      }).each((arabic, tibetan) => {
+      const tibToArab = {
+        '\u0f20': '0', '\u0f21': '1', '\u0f22': '2', '\u0f23': '3', '\u0f24': '4',
+        '\u0f25': '5', '\u0f26': '6', '\u0f27': '7', '\u0f28': '8', '\u0f29': '9'
+      };
+      Object.entries(tibToArab).forEach(([tibetan, arabic]) => {
         text = text.replace(new RegExp(tibetan, 'g'), arabic);
-      })
+      });
       return text;
     },
     substituteWordsWith7AsCheGo (text) {
@@ -82,7 +83,7 @@ var Group = function(tibetan, rulesUsed) {
     group: '',
     convert: function() {
       var syllable;
-      this.syllables = _.compact(tibetan.trim().split('་'));
+      this.syllables = tibetan.trim().split('\u0f0b').filter(Boolean);
       this.groupNumberOfSyllables = this.syllables.length;
       while (syllable = this.syllables.shift()) {
         var exception = this.findLongestException(syllable, this.syllables);
@@ -421,7 +422,7 @@ const assignValidSettingOrThrowException = function (setting) {
       typeof(setting.rules) == 'object' &&
       typeof(setting.exceptions) == 'object'
     ) {
-      _(setting.rules).defaults(baseRules);
+      setting.rules = Object.assign({}, baseRules, setting.rules);
       return setting;
     } else
       throwBadArgumentsError("You passed an object but it doesn't return " +
