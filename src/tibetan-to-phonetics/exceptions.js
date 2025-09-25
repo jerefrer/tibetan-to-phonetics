@@ -106,14 +106,15 @@ export var Exceptions = function (setting, converter, rulesUsed, exceptionsUsed)
 };
 
 Exceptions.normalize = normalize;
+Exceptions.generalExceptions = generalExceptions;
 
 Exceptions.reinitializeFromDefaults = function () {
   Exceptions.generalExceptions = Exceptions.normalize(defaultGeneralExceptions);
 };
 
 Exceptions.generalExceptionsAsArray = function () {
-  return _(Exceptions.generalExceptions).map(function (value, key) {
-    return { key: key, value: value };
+  return Object.keys(Exceptions.generalExceptions).map(function (key) {
+    return { key: key, value: Exceptions.generalExceptions[key] };
   });
 };
 

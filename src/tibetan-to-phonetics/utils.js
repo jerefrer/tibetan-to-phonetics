@@ -72,5 +72,22 @@ function repeatString(str, num) {
 }
 
 export function deepClone(object) {
-  return JSON.parse(JSON.stringify(object));
+  if (object === undefined) return undefined;
+  if (object === null) return null;
+  if (typeof object !== 'object') return object;
+  
+  if (Array.isArray(object)) {
+    return object.map(item => deepClone(item));
+  }
+  
+  const cloned = {};
+  for (const key in object) {
+    if (object.hasOwnProperty(key)) {
+      const value = object[key];
+      if (value !== undefined) {
+        cloned[key] = deepClone(value);
+      }
+    }
+  }
+  return cloned;
 }
