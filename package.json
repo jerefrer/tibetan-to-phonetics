@@ -40,8 +40,8 @@
     "url": "https://github.com/jerefrer/tibetan-syllable-parser/issues"
   },
   "dependencies": {
-    "tibetan-normalizer": "^0.1.0",
-    "tibetan-syllable-parser": "^1.1.0"
+    "tibetan-normalizer": "^0.2.0",
+    "tibetan-syllable-parser": "^1.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.0",
