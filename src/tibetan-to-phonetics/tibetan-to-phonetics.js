@@ -3,7 +3,7 @@
 import { Settings } from './settings.js';
 import { baseRules } from './settings/base.js';
 import { Exceptions } from './exceptions.js';
-import { removeMuteCharsAndNormalize } from './utils';
+import { removeMuteCharsAndNormalize } from './utils.js';
 import { TibetanSyllableParser } from 'tibetan-syllable-parser';
 
 export var syllablesWithUnknownConsonant = [];
@@ -12,7 +12,7 @@ export { baseRules } from './settings/base.js';
 export { defaultSettings } from './settings/all.js';
 export { defaultGeneralExceptions } from './settings/exceptions.js';
 export { Exceptions } from './exceptions.js';
-export { removeMuteCharsAndNormalize } from './utils';
+export { removeMuteCharsAndNormalize } from './utils.js';
 
 var t, findException;
 

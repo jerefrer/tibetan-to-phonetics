@@ -2,7 +2,7 @@ const shared = {
   ignore: ['src/**/*.spec.js']
 }
 
-module.exports = {
+export default {
   env: {
     esmUnbundled: shared,
     esmBundled: {
