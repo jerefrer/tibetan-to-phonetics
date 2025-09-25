@@ -1,5 +1,5 @@
 import { defaultGeneralExceptions } from './settings/exceptions.js';
-import { removeMuteCharsAndNormalize } from './utils.js';
+import { deepClone, removeMuteCharsAndNormalize } from './utils.js';
 
 var t;
 
@@ -27,7 +27,7 @@ export var Exceptions = function (setting, converter, rulesUsed, exceptionsUsed)
     converter: converter,
     exceptionsUsed: exceptionsUsed,
     generalExceptions: generalExceptions,
-    exceptions: _(_.clone(setting.exceptions)).defaults(generalExceptions),
+    exceptions: Object.assign(deepClone(setting.exceptions), generalExceptions),
     find(tibetan) {
       var exception;
       var phonetics;
